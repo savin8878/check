@@ -3,8 +3,9 @@
 import Image, { StaticImageData } from "next/image";
 import styles from "./style.module.css";
 import { useTransform, motion, useScroll } from "framer-motion";
-import { useRef } from "react";
-import { FaIndustry } from "react-icons/fa"; // Importing the icon
+import { useEffect, useRef, useState } from "react";
+import { FaIndustry } from "react-icons/fa";
+import Modal from "../ui/Modal"; // Import the Modal component
 
 interface CardProps {
   i: number;
@@ -41,6 +42,27 @@ const Card: React.FC<CardProps> = ({
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
+  const [isModalOpen, setModalOpen] = useState(false);
+  
+  useEffect(() => {
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setButtonPosition({
+        top: rect.top + window.scrollY,
+        left: rect.left + window.scrollX,
+      });
+    }
+  }, [isModalOpen]);
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div ref={container} className={styles.cardContainer}>
@@ -57,8 +79,8 @@ const Card: React.FC<CardProps> = ({
           <span
             style={{
               backgroundColor: color,
-            }} 
-            className=" absolute rounded-b-3xl  w-60 top-0 left-0 flex h-40 items-center p-4 z-50 shadow-lg"
+            }}
+            className="absolute rounded-b-3xl w-60 top-0 left-0 flex h-40 items-center p-4 z-30 shadow-lg"
           >
             {expertise}
           </span>
@@ -91,23 +113,26 @@ const Card: React.FC<CardProps> = ({
             </span>
           </div>
         </div>
-        <div className={styles.plusButton}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M12 4C12.5523 4 13 4.44772 13 5V11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H13V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19V13H5C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11H11V5C11 4.44772 11.4477 4 12 4Z"
-              fill="white"
-            />
-          </svg>
-        </div>
+        <button
+          ref={buttonRef}
+          onClick={handleModalOpen}
+          className={styles.plusButton}
+        >
+          +
+        </button>
       </motion.div>
+      
+      {isModalOpen && (
+        <Modal
+          image={src}
+          title={title}
+          firstname="First Name"
+          secondname="Second Name"
+          description={description}
+          items={[]} // Replace with actual items if available
+          onClose={handleModalClose}
+        />
+      )}
     </div>
   );
 };

@@ -1,6 +1,8 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import Image from "next/image";
+import { motion,useScroll, useTransform } from "framer-motion";
 
 interface Stats {
   machinesSold: number | string;
@@ -26,8 +28,18 @@ const AboutUs: React.FC<AboutUsProps> = ({
   stats,
   cards,
 }) => {
+  const container = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start end", "start start"],
+  });
+  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
+
   return (
-    <div className="flex mt-10 font-montserrat flex-col items-center p-7 bg-gray-100">
+    <div
+      ref={container}
+      className="flex mt-10 max-w-screen-2xl mx-auto font-montserrat flex-col items-center  bg-gray-100"
+    >
       <div className="text-center w-full max-w-6xl ">
         <h1 className="text-3xl text-[#483d78]">
           About <span className="text-red-500">Us</span>
@@ -59,7 +71,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
           </div>
         </div>
         <a
-          href="#"
+          href="/products"
           className="text-[#483d73] mt-4 mr-16 inline-block underline-offset-3 underline"
         >
           Read more
@@ -70,18 +82,21 @@ const AboutUs: React.FC<AboutUsProps> = ({
         {cards.map((card, index) => (
           <div key={index} className="relative w-full md:w-[30%] p-0 group">
             <div className="relative overflow-hidden rounded-md transition-transform transform group-hover:scale-110">
-              <Image
-                src={card.image}
-                alt={card.title}
-                width={600}
-                height={250}
-                className="w-full border-2 h-52 object-cover"
-              />
-              <div className="absolute bottom-0 left-0 p-2 flex items-center justify-between w-full">
-                <a href={card.link} className="text-[#483d78] text-md">
+              <motion.div style={{ scale: imageScale }}>
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  width={600}
+                  height={250}
+                  className="w-full rounded-3xl border-2 h-52 object-cover"
+                />
+              </motion.div>
+
+              <div className="absolute bottom-0 left-0 p-4 flex items-center justify-between w-full">
+                <a href={card.link} className="text-white font-extrabold text-md">
                   {card.title}
                 </a>
-                <BsBoxArrowUpRight className="text-red-500 text-bold" />
+                <BsBoxArrowUpRight className="text-2xl text-white font-extrabold text-bold" />
               </div>
             </div>
           </div>

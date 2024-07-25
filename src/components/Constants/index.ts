@@ -26,6 +26,9 @@ import {
   BookServiceImage,
   paperLunchBoxMachine,
 } from "../../../public/assets";
+import HomeAbout1 from "../../../public/assets/HomeAbout1.png"
+import HomeAbout2 from "../../../public/assets/HomeAbout2.jpg"
+import HomeAbout3 from "../../../public/assets/HomeAbout3.png"
 import { StaticImageData } from "next/image";
 interface Images {
   paperBowlMachineImage: StaticImageData;
@@ -729,22 +732,22 @@ export const data = {
   description: `At Nessco India, we specialize in manufacturing advanced food packaging machines that set industry standards for quality and innovation. Our state-of-the-art technology ensures efficient and sustainable solutions, meeting the diverse needs of our global clientele. With over 40 years of expertise, we are dedicated to pioneering eco-friendly practices in packaging. Trust us to lead the way in transforming packaging solutions for a greener future.`,
   stats: {
     machinesSold: "30000+",
-    readyStockMachines: "3000+"
+    readyStockMachines: "3000+",
   },
   cards: [
     {
       title: "Vision & Mission",
-      image: paperbag1.src,
-            link: "#",
+      image: HomeAbout1.src,
+      link: "#",
     },
     {
       title: "Our Strength",
-      image: paperBagMachineImage.src,    
-        link: "#",
+      image: HomeAbout2.src,
+      link: "#",
     },
     {
       title: "People & Culture",
-      image: paperStrawMachine.src,
+      image: HomeAbout3.src,
       link: "#",
     },
   ],

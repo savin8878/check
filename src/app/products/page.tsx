@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Stepper from "../../components/OurMachine/Stepper";
+import Stepper from "../../components/ui/Stepper";
 import Card from "../../components/OurMachine/Card";
 import {
   paperBagMachineImage,

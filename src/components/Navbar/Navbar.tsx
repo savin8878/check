@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, MenuItem } from "./nav-menue";
 import { cn } from "@/lib/utils";
 import AboutLayout from "../Layout/AboutLayout";
@@ -23,10 +23,28 @@ export default function NavbarDemo() {
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div
       className={cn(
-        "fixed top-0 flex w-full  max-w-screen-2xl items-center inset-x-0 mx-auto z-50",
+        "fixed top-0 flex w-full max-w-screen-2xl items-center inset-x-0 mx-auto z-50",
+        scrolled ? "bg-white opacity-50" : "bg-transparent",
         className
       )}
     >
@@ -89,3 +107,5 @@ function Navbar({ className }: { className?: string }) {
     </div>
   );
 }
+
+

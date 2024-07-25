@@ -6,7 +6,8 @@
   align-items: center;
   justify-content: center;
   position: sticky;
-  top: 0px;
+  /* z-index:9999; */
+  top: 0;
 }
 
 .card {
@@ -30,7 +31,6 @@
   height: 40%;
   align-items: center;
   padding: 10px;
-  z-index: 999;
   border-radius: 8px;
 }
 

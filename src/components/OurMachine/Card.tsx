@@ -3,8 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import Modal from "./Modal";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import Modal from "../ui/Modal";
 
 interface Item {
   icon: JSX.Element;
@@ -36,9 +35,6 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -49,42 +45,9 @@ const Card: React.FC<CardProps> = ({
   }, [isModalOpen]);
 
   const handleModalToggle = () => {
-    if (!isModalOpen) {
-      const newParams = new URLSearchParams(searchParams.toString());
-      newParams.set("product", title.replace(/\s+/g, "-"));
-      const newUrl = `${pathname}?${newParams.toString()}`;
-      router.push(newUrl);
-    } else {
-      const newParams = new URLSearchParams(searchParams.toString());
-      newParams.delete("product");
-      const newUrl = `${pathname}?${newParams.toString()}`;
-      router.push(newUrl);
-    }
     setIsModalOpen(!isModalOpen);
   };
 
-  const modalVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 0.5,
-      x: buttonPosition.left - window.innerWidth / 2,
-      y: buttonPosition.top - window.innerHeight / 2,
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      x: "0%",
-      y: "0%",
-      transition: { duration: 0.5, type: "spring", stiffness: 500 },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.5,
-      x: buttonPosition.left - window.innerWidth / 2,
-      y: buttonPosition.top - window.innerHeight / 2,
-      transition: { duration: 0.5, type: "spring", stiffness: 500 },
-    },
-  };
 
   return (
     <div className="p-1 top-28 px-4 pb-4 bg-white rounded-3xl shadow-md relative">

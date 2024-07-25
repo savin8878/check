@@ -2,36 +2,43 @@
 
 import React from "react";
 import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
+import TextOpacity from "../ui/TextOpacity";
 
 export default function InfiniteMovingCardsDemo() {
   return (
-    <div className="h-screen  flex flex-col antialiased dark:bg-black dark:bg-grid-white/[0.05] justify-center relative overflow-hidden p-8">
-      <div className="flex flex-col items-start mb-8">
-        <div className="flex items-center">
-          <span className="text-lg font-bold mb-4 mr-4">Trusted By</span>
-          <InfiniteMovingCards
-            items={trustedBrands}
-            direction="right"
-            speed="slow"
-          />
+    <div className="h-screen flex flex-col antialiased dark:bg-black dark:bg-grid-white/[0.05] justify-center relative overflow-hidden p-8">
+      <div className="flex flex-col space-y-8">
+        <div className="flex items-center space-x-4">
+          <span className="text-xl font-montserrat  whitespace-nowrap">Trusted By</span>
+          <div className="flex-grow">
+            <InfiniteMovingCards
+              items={trustedBrands}
+              direction="right"
+              speed="slow"
+              className="w-full"
+            />
+          </div>
+        </div>
+        <div className="flex items-center space-x-4">
+          <span className="text-xl font-montserrat  whitespace-nowrap">Partner Brands</span>
+          <div className="flex-grow">
+            <InfiniteMovingCards
+              items={partnerBrands}
+              direction="left"
+              speed="slow"
+              className="w-full"
+            />
+          </div>
         </div>
       </div>
-      <div className="flex flex-col items-start mt-8">
-        <div className="flex items-center">
-          <span className="text-lg font-bold mb-4 mr-4">Partner Brands</span>
-          <InfiniteMovingCards
-            items={partnerBrands}
-            direction="left"
-            speed="slow"
-          />
-        </div>
-      </div>
-      <div className="flex flex-col items-center mt-8 text-center">
-        <p className="text-sm leading-6">
+      <div className="flex flex-col items-center mt-28 text-center">
+        <p className="text-xl mx-4 w-[62%] font-montserrat leading-8">
           Empowering sustainable packaging with advanced paper-based solutions.
           Our innovative machines drive global CO2 reduction, paving the way for
           a greener earth and elevating your packaging capabilities.
         </p>
+        {/* <TextOpacity/> */}
+        
       </div>
     </div>
   );

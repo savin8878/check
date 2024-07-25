@@ -2,8 +2,10 @@
 import Image from "next/image";
 import React, { useState, useCallback, memo, useEffect, useRef } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Carousel from "./Carousel";
 import Manufacturing from "../../../public/assets/Manufacturing.png";
+
 interface NavLinkProps {
   href: string;
   text: string;
@@ -12,6 +14,7 @@ interface NavLinkProps {
   handleMouseEnter: (index: number) => void;
   handleMouseLeave: () => void;
 }
+
 const NavLink: React.FC<NavLinkProps> = memo(
   ({ href, text, index, activeLink, handleMouseEnter, handleMouseLeave }) => (
     <a
@@ -64,12 +67,17 @@ const Hero: React.FC = () => {
     };
   }, []);
 
+  const { scrollY } = useScroll();
+  const videoWidth = useTransform(scrollY, [0, 300], ["100%", "150%"]);
+  const videoX = useTransform(scrollY, [0, 300], ["0%", "-25%"]);
+
   return (
     <div className="relative bg-[#f5f5f5] max-w-screen-2xl mx-auto m-auto flex flex-col items-center  rounded-lg overflow-hidden min-h-screen w-full">
       <div className="relative sm:p-8 md:p-2 lg:px-4 w-full flex-wrap">
-        <div
-          className="relative w-full md:mt-[2.8rem] h-[calc(100vh-150px)]  sm:h-[calc(100vh-220px)] rounded-2xl"
+        <motion.div
+          className="relative w-full md:mt-[3rem] h-[calc(100vh-150px)]  sm:h-[calc(100vh-210px)] rounded-2xl"
           ref={videoRef}
+          style={{ width: videoWidth, x: videoX, originX: 0.5 }}
         >
           {isVideoLoaded ? (
             <video
@@ -90,7 +98,7 @@ const Hero: React.FC = () => {
               <div className="loader"></div>
             </div>
           )}
-        </div>
+        </motion.div>
         <div className="absolute bg-[#f5f5f5] border-2 rounded-3xl px-4 p-0 flex items-center bottom-0 left-8 sm:bottom-10 sm:left-10 md:bottom-20 md:left-20">
           <span className="mr-2">Get a Quote</span>
           <button className="relative mr-[-0.8rem] right-0  z-10 p-1 text-4xl h-10 w-10 border-2 rounded-full overflow-hidden bg-white text-black transition-all hover:text-white hover:bg-black">
@@ -110,8 +118,8 @@ const Hero: React.FC = () => {
             alt="Manufacturing Image"
             layout="responsive"
             height={10}
-            width={1}
-            className="w-[20%] pr-6 h-auto object-cover rounded-2xl"
+            width={10}
+            className="w-full pr-6 h-auto object-cover rounded-2xl"
           />
           <nav className="flex flex-wrap mt-0 space-x-2 sm:space-x-4 px-1 sm:px-2">
             <NavLink

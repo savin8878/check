@@ -50,9 +50,9 @@ const Modal: React.FC<ModalProps> = ({
   ];
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999]">
       <motion.div
-        className="relative w-full max-w-[78rem] h-[90vh] bg-white rounded-xl p-6 transform transition-transform overflow-y-auto"
+        className="relative w-full  max-w-[78rem] h-[90vh] bg-white rounded-xl p-6 transform transition-transform overflow-y-auto"
         variants={modalVariants}
         initial="hidden"
         animate="visible"
