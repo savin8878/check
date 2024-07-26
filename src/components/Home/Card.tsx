@@ -29,7 +29,6 @@ const Card: React.FC<CardProps> = ({
   url,
   color,
   expertise,
-  icon,
   progress,
   range,
   targetScale,
@@ -45,7 +44,7 @@ const Card: React.FC<CardProps> = ({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
   const [isModalOpen, setModalOpen] = useState(false);
-  
+
   useEffect(() => {
     if (buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
@@ -70,23 +69,23 @@ const Card: React.FC<CardProps> = ({
         style={{
           backgroundColor: color,
           scale,
-          top: `calc(-5vh + ${i * 25}px)`,
+          top: `calc(-1vh + ${i * 12}px)`,
         }}
         className={styles.card}
       >
-        <div className={styles.expertiseContainer}>
-          <FaIndustry size={24} />
-          <span
-            style={{
-              backgroundColor: color,
-            }}
-            className="absolute rounded-b-3xl w-60 top-0 left-0 flex h-40 items-center p-4 z-30 shadow-lg"
-          >
-            {expertise}
-          </span>
-        </div>
         <div className={styles.body}>
           <div className={styles.imageContainer}>
+            <div className={styles.expertiseContainer}>
+              <FaIndustry className="text-white flex items-center justify-end text-center z-50" size={24} />
+              <span
+                style={{
+                  backgroundColor: color,
+                }}
+                className="absolute rounded-b-3xl pl-4 rounded-l-none font-montserrat w-60 top-0 left-0 flex h-40 items-center justify-center z-30"
+              >
+                {expertise}
+              </span>
+            </div>
             <motion.div className={styles.inner} style={{ scale: imageScale }}>
               <Image fill src={src} alt="image" />
             </motion.div>
@@ -121,7 +120,7 @@ const Card: React.FC<CardProps> = ({
           +
         </button>
       </motion.div>
-      
+
       {isModalOpen && (
         <Modal
           image={src}

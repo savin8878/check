@@ -1,152 +1,127 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import {
-  paperBowlMachineImage,
-  paperBagMachineImage,
-  paperPlateMachineImage,
-  paperFlexoMachineImage,
-  fullyAutomaticBagMachineImage,
-  PCM110WithPLC,
-  paperStrawMachine,
-  BookServiceImage,
-  paperLunchBoxMachine,
-} from "../../../public/assets";
+import React, { useState, useRef, useEffect } from "react";
+import { Items,item } from '../Constants/index'; // Adjust the path as necessary
+import { SlArrowRight, SlArrowDown, SlArrowUp } from "react-icons/sl";
+import styles from '../Layout/solution.module.css' // Adjust the path as necessary
 
-const Machines = [
-  {
-    name: "Paper Cup Plant Setup",
-    category: "Paper Cup Plant Setup",
-    image: paperBowlMachineImage,
-    description: "Set up your paper cup plant with our high-speed machines for efficient, eco-friendly production.",
-  },
-  {
-    name: "Raw Material Plant Setup",
-    category: "Raw Material Plant Setup",
-    image: paperBagMachineImage,
-    description: "Efficient and reliable raw material plant setup for optimal production.",
-  },
-  {
-    name: "Printing & Die Cutting Setup",
-    category: "Printing & Die Cutting Setup",
-    image: paperPlateMachineImage,
-    description: "Advanced printing and die-cutting setups for high-quality outputs.",
-  },
-  {
-    name: "Paper Straw Plant Setup",
-    category: "Paper Straw Plant Setup",
-    image: paperFlexoMachineImage,
-    description: "Eco-friendly paper straw plant setup for sustainable production.",
-  },
-  {
-    name: "Paper Bag Plant Setup",
-    category: "Paper Bag Plant Setup",
-    image: fullyAutomaticBagMachineImage,
-    description: "Efficient paper bag plant setup for versatile and eco-friendly bag production.",
-  },
-  {
-    name: "Paper Plate Plant Setup",
-    category: "Paper Plate Plant Setup",
-    image: PCM110WithPLC,
-    description: "High-speed paper plate plant setup for efficient and eco-friendly production.",
-  },
-  {
-    name: "Molds & Die Solutions",
-    category: "Molds & Die Solutions",
-    image: paperStrawMachine,
-    description: "Precision molds and die solutions for all your manufacturing needs.",
-  },
-  {
-    name: "Sterio Solutions",
-    category: "Sterio Solutions",
-    image: BookServiceImage,
-    description: "Comprehensive sterio solutions for your production needs.",
-  },
-  {
-    name: "All Solutions",
-    category: "All Solutions",
-    image: paperLunchBoxMachine,
-    description: "Complete solutions for all your manufacturing requirements.",
-  },
-];
 
-const SidebarLinks = [
-  { name: "Paper Cup Plant Setup", icon: "/icons/paper-cup.png" },
-  { name: "Raw Material Plant Setup", icon: "/icons/raw-material.png" },
-  { name: "Printing & Die Cutting Setup", icon: "/icons/printing-die-cutting.png" },
-  { name: "Paper Straw Plant Setup", icon: "/icons/paper-straw.png" },
-  { name: "Paper Bag Plant Setup", icon: "/icons/paper-bag.png" },
-  { name: "Paper Plate Plant Setup", icon: "/icons/paper-plate.png" },
-  { name: "Molds & Die Solutions", icon: "/icons/molds-die.png" },
-  { name: "Sterio Solutions", icon: "/icons/sterio.png" },
-  { name: "All Solutions", icon: "/icons/all-solutions.png" },
-];
 
-const ProductLayout = () => {
-  const [selectedCategory, setSelectedCategory] = useState(SidebarLinks[0].name);
-  const [currentImage, setCurrentImage] = useState(Machines[0].image);
-  const [currentDescription, setCurrentDescription] = useState(Machines[0].description);
+const Solution: React.FC = () => {
+  const [selectedItem, setSelectedItem] = useState<item>(Items[0]);
+  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const listRef = useRef<HTMLDivElement | null>(null);
+  const itemRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+ 
 
-  const handleMouseEnter = (name: string) => {
-    const machine = Machines.find((machine) => machine.name === name);
-    if (machine) {
-      setSelectedCategory(machine.name);
-      setCurrentImage(machine.image);
-      setCurrentDescription(machine.description);
+
+  const handleScroll = () => {
+    if (listRef.current && listRef.current.scrollTop > 0) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
     }
   };
 
+  const handleItemHover = (item:item) => {
+    setHoveredItem(item.id);
+    setSelectedItem(item);
+  };
+
+  const handleScrollUp = () => {
+    if (listRef.current) {
+      listRef.current.scrollTop -= 50; // Adjust scroll amount as needed
+    }
+  };
+
+  const handleScrollDown = () => {
+    if (listRef.current) {
+      listRef.current.scrollTop += 50; // Adjust scroll amount as needed
+    }
+  };
+
+  const handleItemLeave = () => {
+    setHoveredItem(null);
+  };
+  
+
+
+  useEffect(() => {
+    const currentRef = listRef.current;
+    if (currentRef) {
+      currentRef.addEventListener('scroll', handleScroll);
+      return () => currentRef.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
   return (
-    <div className="w-[98vw] z-30 md:h-full p-6 rounded-xl flex flex-col justify-center items-center font-medium">
-      <div className="w-full flex flex-col md:flex-row rounded-lg overflow-hidden">
-        <div className="flex h-full justify-center items-center w-full md:w-3/4 relative">
-          <div className="flex flex-wrap pb-8 justify-center overflow-hidden w-full">
-            <div className="text-center relative w-full p-1">
-              <Image
-                src={currentImage}
-                alt={selectedCategory}
-                className="object-contain rounded-lg relative z-10 h-64 w-full transition-transform duration-300"
-                width={500}
-                height={300}
+    <div className="flex justify-center items-start w-[98vw] max-w-screen-2xl">
+      <div className="rounded-b-5xl  h-4/5 w-full relative">
+        <div className="flex">
+          <div className="p-8 relative w-9/12">
+            <div className="relative ml-10">
+              <img
+                src={selectedItem.img.src}
+                alt={selectedItem.name}
+                className="absolute -right-9 rounded-lg w-72 h-72 object-cover"
               />
-              <h3 className="text-lg text-black mt-2 font-bold relative z-20">
-                {selectedCategory}
-              </h3>
-              <p className="text-sm text-black mt-2 relative z-20">
-                {currentDescription}
-              </p>
-              <div className="flex justify-center mt-2 space-x-2">
-                <a
-                  href={`/products/${selectedCategory}`}
-                  className="relative text-white bg-red-500 rounded-3xl px-8 p-1 z-20"
-                >
-                  Book Now
-                </a>
+            </div>
+            <div className="relative z-10 w-4/5">
+              <h2 className="text-6xl font-extrabold text-[#483d73]">
+                {selectedItem.name.split(' ')[0]}
+              </h2>
+              <h2 className="text-6xl font-extrabold text-red-600">
+                {selectedItem.name.split(' ').slice(1).join(' ')}
+              </h2>
+              <div className="w-3/4">
+                <p className="text-sm mt-4 font-montserrat w-auto">
+                  {selectedItem.description}
+                </p>
               </div>
             </div>
+
+            <div className={styles.buttonContainer}>
+              <button className={styles.customButton}>
+                Know More
+                <SlArrowRight className={styles.customIcon} />
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="w-full mt-2 md:w-1/4 pl-4 space-y-2 border-l border-gray-300 relative">
-          <div className="pt-6 space-y-4">
-            {SidebarLinks.map((link) => (
-              <div
-                key={link.name}
-                onMouseEnter={() => handleMouseEnter(link.name)}
-                className={`flex items-center space-x-2 text-lg transition-colors duration-300 cursor-pointer ${
-                  selectedCategory === link.name
-                    ? "font-montserrat font-bold text-[#483d73]"
-                    : "font-montserrat text-[#483d73]"
-                }`}
-              >
-                <img src={link.icon} alt={link.name} className="w-6 h-6" />
-                <span
-                  className={`transition duration-300 ${
-                    selectedCategory === link.name ? "font-semibold" : ""
-                  }`}
+          <div className="border-r border-gray-400 p-4 mb-7 mt-5"></div>
+          <div className="w-[24%] p-4">
+            <div className="relative">
+              <SlArrowUp
+                className={`${styles.arrowUp} ${isScrolled ? 'visible' : 'invisible'}`}
+                onClick={handleScrollUp}
+              />
+            </div>
+
+            <div
+              ref={listRef}
+              className={`space-y-3 h-72 overflow-y-auto ${styles.hideScrollbar} -ml-2 mt-4`}
+            >
+              {Items.map((item, index) => (
+                <p 
+                  key={item.id}
+                  ref={(el) => { itemRefs.current[index] = el; }} // Update ref assignment
+                  className={`p-2 ${
+                    selectedItem.id === item.id || hoveredItem === item.id
+                      ? 'text-[#483d73] font-bold'
+                      : 'text-black'
+                  } hover:text-[#483d73] hover:font-bold`}
+                  onMouseEnter={() => handleItemHover(item)}
+                  onMouseLeave={handleItemLeave}
+                 
                 >
-                  {link.name}
-                </span>
-              </div>
-            ))}
+                  {item.name}
+                </p>
+              ))}
+            </div>
+            <div className="mt-3">
+              <SlArrowDown
+                className={`${styles.arrowDown} text-[#483d73]`}
+                onClick={handleScrollDown}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -154,4 +129,4 @@ const ProductLayout = () => {
   );
 };
 
-export default ProductLayout;
+export default Solution;

@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import { gsap } from "gsap";
+import { motion, useAnimation } from "framer-motion";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,6 +9,7 @@ import { items, titlesWithImages } from "../Constants";
 const AboutLayout = () => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const controls = useAnimation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const scrollDown = () => {
@@ -34,18 +35,6 @@ const AboutLayout = () => {
   useEffect(() => {
     const carouselElement = carouselRef.current;
     if (carouselElement) {
-      gsap.fromTo(
-        carouselElement.children,
-        { y: "100%", scale: 0.5, opacity: 0 },
-        {
-          y: "0%",
-          scale: 1,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.05,
-          ease: "elastic.out(1, 0.5)",
-        }
-      );
       carouselElement.addEventListener("wheel", handleWheel);
     }
     return () => {
@@ -55,14 +44,29 @@ const AboutLayout = () => {
     };
   }, [currentIndex]);
 
+  useEffect(() => {
+    controls.start({
+      y: 0,
+      scale: 1,
+      opacity: 1,
+      transition: { duration: 0.5, staggerChildren: 0.05, ease: "easeOut" },
+    });
+  }, [currentIndex, controls]);
+
   return (
     <div
       ref={containerRef}
-      className="flex w-[98vw] max-w-screen-2xl flex-col md:flex-row items-center justify-center  rounded-xl pb-8 h-full px-2 md:px-4"
+      className="flex w-[98vw] max-w-screen-2xl flex-col md:flex-row items-center justify-center rounded-xl pb-8 h-full px-2 md:px-4"
     >
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-screen-lg">
         {titlesWithImages.map((item, index) => (
-          <div key={index} className="flex flex-col items-center mt-4">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="flex flex-col items-center mt-4"
+          >
             <Link href={`/${item.title}`} passHref>
               <Image
                 src={item.image}
@@ -75,12 +79,16 @@ const AboutLayout = () => {
                 {item.title}
               </p>
             </Link>
-          </div>
+          </motion.div>
         ))}
       </div>
       <div className="ml-4 w-2 h-72 border-l border-gray-300"></div>
       <div className="ml-4 md:w-[15%] min-h-full flex flex-col justify-between">
-        <div ref={carouselRef}>
+        <motion.div
+          ref={carouselRef}
+          initial={{ y: "100%", scale: 0.5, opacity: 0 }}
+          animate={controls}
+        >
           {items.slice(currentIndex, currentIndex + 2).map((item, index) => (
             <Link key={index} href={`/${item.title}`} passHref>
               <div
@@ -96,7 +104,7 @@ const AboutLayout = () => {
               </div>
             </Link>
           ))}
-        </div>
+        </motion.div>
         <div className="flex w-full justify-end">
           {currentIndex > 0 && (
             <button

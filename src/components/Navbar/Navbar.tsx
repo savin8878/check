@@ -12,7 +12,6 @@ import Logo from "../../../public/assets/Logo.png";
 import RightNavbar from "./RightNavbar";
 import ApplicationPage from "../Layout/ApplicationLayout";
 import SolutionLayout from "../Layout/Solution";
-
 export default function NavbarDemo() {
   return (
     <div className="relative max-w-screen-2xl flex items-center justify-center">
@@ -44,7 +43,7 @@ function Navbar({ className }: { className?: string }) {
     <div
       className={cn(
         "fixed top-0 flex w-full max-w-screen-2xl items-center inset-x-0 mx-auto z-50",
-        scrolled ? "bg-white opacity-50" : "bg-transparent",
+        scrolled ? "bg-[#f5f5f5]" : "bg-transparent",
         className
       )}
     >
@@ -64,30 +63,42 @@ function Navbar({ className }: { className?: string }) {
       </div>
       <div className="w-3/5 flex items-center justify-center">
         <Menu setActive={setActive}>
-          <MenuItem setActive={setActive} active={active} item="About">
+          <MenuItem setActive={setActive} active={active} item="About" setPosition={function (position: Position): void {
+            throw new Error("Function not implemented.");
+          } }>
             <AboutLayout />
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Products">
+          <MenuItem setActive={setActive} active={active} item="Products" setPosition={function (position: Position): void {
+            throw new Error("Function not implemented.");
+          } }>
             <ProductLayout
               setHoveredItem={() => {}}
               setHeading={() => {}}
               setIsVisible={() => {}}
             />
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Application">
+          <MenuItem setActive={setActive} active={active} item="Application" setPosition={function (position: Position): void {
+            throw new Error("Function not implemented.");
+          } }>
             <ApplicationPage />
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Solution">
+          <MenuItem setActive={setActive} active={active} item="Solution" setPosition={function (position: Position): void {
+            throw new Error("Function not implemented.");
+          } }>
             <SolutionLayout />
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Support">
+          <MenuItem setActive={setActive} active={active} item="Support" setPosition={function (position: Position): void {
+            throw new Error("Function not implemented.");
+          } }>
             <SupportLayout
               setHoveredItem={() => {}}
               supporItem={supporItem}
               type={""}
             />
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Resources">
+          <MenuItem setActive={setActive} active={active} item="Resources" setPosition={function (position: Position): void {
+            throw new Error("Function not implemented.");
+          } }>
             <SupportLayout
               setHoveredItem={() => {}}
               supporItem={supporItem}

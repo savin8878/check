@@ -142,3 +142,7 @@ html::-webkit-scrollbar {
     transform: translateX(-50%);
   }
 }
+.no-scroll {
+  overflow: hidden !important;
+}
+

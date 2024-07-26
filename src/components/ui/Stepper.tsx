@@ -24,8 +24,8 @@ const Stepper: React.FC = () => {
   };
 
   return (
-    <div className="fixed top-14 left-0 w-full z-30">
-      <div className="flex items-center justify-center py-2 relative max-w-sm mx-auto">
+    <div className="sticky bg-[#f5f5f5] top-14 left-0 w-full z-30">
+      <div className="flex  items-center justify-center py-2 relative max-w-sm mx-auto">
         {steps.map((step, index) => (
           <React.Fragment key={index}>
             <div

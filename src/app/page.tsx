@@ -4,6 +4,9 @@ import AboutUs from "@/components/Home/HomeAbout";
 import { data } from "@/components/Constants";
 import InfiniteMovingCardsDemo from "@/components/Home/HomeMarquee";
 import KnowMore from "@/components/Home/KnowMore";
+import HomeMachine from "@/components/Home/HomeMachine";
+import NewsFeature from "@/components/Home/newFeatures/NewFeatures";
+import KnowMachine from "@/components/Home/HomeKnowMachine";
 export default function Home() {
   return (
     <main className="bg-[#f5f5f5]">
@@ -17,6 +20,9 @@ export default function Home() {
       />
       <InfiniteMovingCardsDemo />
       <KnowMore />
+      <HomeMachine/>
+      <NewsFeature/>
+      <KnowMachine/>
     </main>
   );
 }

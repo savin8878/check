@@ -28,7 +28,8 @@ export default function KnowMore() {
   return (
     <main ref={container} className={styles.main}>
       {projects.map((project, i) => {
-        const targetScale = 1 - (projects.length - i) * 0.05;
+        // Calculate targetScale for all items except the last one
+        const targetScale = i < projects.length - 1 ? 1 - (projects.length - i) * 0.1 : 1;
         return (
           <Card
             url={""}

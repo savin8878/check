@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import Breadcrumb from "./Breadcrumb"; // Adjust the path according to your file structure
@@ -43,16 +43,24 @@ const Modal: React.FC<ModalProps> = ({
   items,
   onClose,
 }) => {
+  useEffect(() => {
+    // Add the no-scroll class to the body
+    document.body.classList.add("no-scroll");
+
+    // Cleanup function to remove the no-scroll class
+    return () => {
+      document.body.classList.remove("no-scroll");
+    };
+  }, []);
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
     { label: title, current: true },
   ];
-
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999]">
       <motion.div
-        className="relative w-full  max-w-[78rem] h-[90vh] bg-white rounded-xl p-6 transform transition-transform overflow-y-auto"
+        className="relative w-full max-w-[78rem] h-[90vh] bg-white rounded-xl p-6 transform transition-transform overflow-y-auto"
         variants={modalVariants}
         initial="hidden"
         animate="visible"

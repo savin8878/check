@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import Image from "next/image";
-import { motion,useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface Stats {
   machinesSold: number | string;
@@ -93,7 +93,10 @@ const AboutUs: React.FC<AboutUsProps> = ({
               </motion.div>
 
               <div className="absolute bottom-0 left-0 p-4 flex items-center justify-between w-full">
-                <a href={card.link} className="text-white font-extrabold text-md">
+                <a
+                  href={card.link}
+                  className="text-white font-extrabold text-md"
+                >
                   {card.title}
                 </a>
                 <BsBoxArrowUpRight className="text-2xl text-white font-extrabold text-bold" />
