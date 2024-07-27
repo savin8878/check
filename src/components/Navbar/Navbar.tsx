@@ -1,6 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { Menu, MenuItem } from "./nav-menue";
+import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import AboutLayout from "../Layout/AboutLayout";
 import SupportLayout from "../Layout/SupportLayout";
@@ -12,6 +11,8 @@ import Logo from "../../../public/assets/Logo.png";
 import RightNavbar from "./RightNavbar";
 import ApplicationPage from "../Layout/ApplicationLayout";
 import SolutionLayout from "../Layout/Solution";
+import { Menu, MenuItem } from "./nav-menue";
+
 export default function NavbarDemo() {
   return (
     <div className="relative max-w-screen-2xl flex items-center justify-center">
@@ -26,11 +27,7 @@ function Navbar({ className }: { className?: string }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -62,53 +59,114 @@ function Navbar({ className }: { className?: string }) {
         </Link>
       </div>
       <div className="w-3/5 flex items-center justify-center">
-        <Menu setActive={setActive}>
-          <MenuItem setActive={setActive} active={active} item="About" setPosition={function (position: Position): void {
-            throw new Error("Function not implemented.");
-          } }>
+        <Menu>
+          <MenuItem
+            setActive={setActive}
+            active={active}
+            item="About"
+            setPosition={function (position: {
+              left: number;
+              width: number;
+              opacity: number;
+            }): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
             <AboutLayout />
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Products" setPosition={function (position: Position): void {
-            throw new Error("Function not implemented.");
-          } }>
+          <MenuItem
+            setActive={setActive}
+            active={active}
+            item="Products"
+            setPosition={function (position: {
+              left: number;
+              width: number;
+              opacity: number;
+            }): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
             <ProductLayout
               setHoveredItem={() => {}}
               setHeading={() => {}}
               setIsVisible={() => {}}
             />
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Application" setPosition={function (position: Position): void {
-            throw new Error("Function not implemented.");
-          } }>
+          <MenuItem
+            setActive={setActive}
+            active={active}
+            item="Application"
+            setPosition={function (position: {
+              left: number;
+              width: number;
+              opacity: number;
+            }): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
             <ApplicationPage />
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Solution" setPosition={function (position: Position): void {
-            throw new Error("Function not implemented.");
-          } }>
+          <MenuItem
+            setActive={setActive}
+            active={active}
+            item="Solution"
+            setPosition={function (position: {
+              left: number;
+              width: number;
+              opacity: number;
+            }): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
             <SolutionLayout />
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Support" setPosition={function (position: Position): void {
-            throw new Error("Function not implemented.");
-          } }>
+          <MenuItem
+            setActive={setActive}
+            active={active}
+            item="Support"
+            setPosition={function (position: {
+              left: number;
+              width: number;
+              opacity: number;
+            }): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
             <SupportLayout
               setHoveredItem={() => {}}
               supporItem={supporItem}
-              type={""}
+              type=""
             />
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Resources" setPosition={function (position: Position): void {
-            throw new Error("Function not implemented.");
-          } }>
+          <MenuItem
+            setActive={setActive}
+            active={active}
+            item="Resources"
+            setPosition={function (position: {
+              left: number;
+              width: number;
+              opacity: number;
+            }): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
             <SupportLayout
               setHoveredItem={() => {}}
               supporItem={supporItem}
-              type={"Resources"}
+              type="Resources"
             />
           </MenuItem>
           <MenuItem
             setActive={setActive}
             active={active}
             item="Video"
+            setPosition={function (position: {
+              left: number;
+              width: number;
+              opacity: number;
+            }): void {
+              throw new Error("Function not implemented.");
+            }}
           ></MenuItem>
         </Menu>
       </div>
@@ -118,5 +176,4 @@ function Navbar({ className }: { className?: string }) {
     </div>
   );
 }
-
 

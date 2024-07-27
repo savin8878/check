@@ -1,148 +1,98 @@
 "use client";
-import React from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
+export const Menu = ({ children }: { children: React.ReactNode }) => {
+  const [active, setActive] = useState<string | null>(null);
+  const [position, setPosition] = useState({ left: 0, width: 0, opacity: 0 });
 
-const transition = {
-  type: "spring",
-  mass: 0.5,
-  damping: 11.5,
-  stiffness: 100,
-  restDelta: 0.001,
-  restSpeed: 0.001,
+  return (
+    <nav
+      onMouseLeave={() => {
+        setActive(null);
+        setPosition({ left: 0, width: 0, opacity: 0 });
+      }}
+      className="mx-auto px-4 flex w-fit rounded-full border-1 bg-white"
+    >
+      {React.Children.map(children, (child) =>
+        React.cloneElement(child as React.ReactElement<any>, {
+          setActive,
+          active,
+          setPosition,
+        })
+      )}
+      <Cursor position={position} />
+    </nav>
+  );
 };
 
 export const MenuItem = ({
   setActive,
   active,
   item,
+  setPosition,
   children,
 }: {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
+  setPosition: (position: {
+    left: number;
+    width: number;
+    opacity: number;
+  }) => void;
   children?: React.ReactNode;
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
     <div
-      onMouseEnter={() => setActive(item)}
-      className="relative max-w-screen-2xl"
+      ref={ref}
+      onMouseEnter={() => {
+        if (!ref?.current) return;
+
+        const { width } = ref.current.getBoundingClientRect();
+
+        setPosition({
+          left: ref.current.offsetLeft,
+          width,
+          opacity: 1,
+        });
+
+        setActive(item);
+      }}
+      className=" z-10 block cursor-pointer px-3 py-1.5 text-xs text-black mix-blend-difference md:px-3 md:py-2 md:text-base"
     >
-      <motion.p
-        transition={{ duration: 0.3 }}
-        className="cursor-pointer font-montserrat rounded-full w-full text-black hover:opacity-[0.9] dark:text-white"
-      >
+      <motion.p className="text-white hover:text-white font-montserrat">
         {item}
       </motion.p>
-      {active !== null && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={transition}
-        >
-          {active === item && (
-            <>
-              {item === "About" && (
-                <div className="absolute max-w-screen-2xl top-[calc(100%_+_0.5rem)] transform -translate-x-[25.5%] pr-0 pt-2">
-                  <motion.div
-                    transition={transition}
-                    layoutId="active"
-                    className="bg-white dark:bg-black rounded-2xl overflow-hidden border"
-                  >
-                    <motion.div layout className="h-full w-max p-2">
-                      {children}
-                    </motion.div>
-                  </motion.div>
-                </div>
-              )}
-              {item === "Products" && (
-                <div className="absolute top-[calc(100%_+_0.5rem)] transform -translate-x-[31.5%] pr-0 pt-2">
-                  <motion.div
-                    transition={transition}
-                    layoutId="active"
-                    className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] "
-                  >
-                    <motion.div layout className="h-full w-max p-2">
-                      {children}
-                    </motion.div>
-                  </motion.div>
-                </div>
-              )}
-              {item === "Application" && (
-                <div className="absolute top-[calc(100%_+_0.5rem)] transform -translate-x-[39%] pr-1 pt-2">
-                  <motion.div
-                    transition={transition}
-                    layoutId="active"
-                    className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] "
-                  >
-                    <motion.div layout className="h-full w-max p-2">
-                      {children}
-                    </motion.div>
-                  </motion.div>
-                </div>
-              )}
-              {item === "Solution" && (
-                <div className="absolute top-[calc(100%_+_0.5rem)] transform -translate-x-[48.5%] pl-2 pt-2">
-                  <motion.div
-                    transition={transition}
-                    layoutId="active"
-                    className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] "
-                  >
-                    <motion.div layout className="h-full w-max p-2">
-                      {children}
-                    </motion.div>
-                  </motion.div>
-                </div>
-              )}
-              {item === "Support" && (
-                <div className="absolute top-[calc(100%_+_0.5rem)] transform -translate-x-[55.5%] pt-2">
-                  <motion.div
-                    transition={transition}
-                    layoutId="active"
-                    className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] "
-                  >
-                    <motion.div layout className="h-full w-max p-2">
-                      {children}
-                    </motion.div>
-                  </motion.div>
-                </div>
-              )}
-              {item === "Resources" && (
-                <div className="absolute top-[calc(100%_+_0.5rem)] transform -translate-x-[62.8%] pt-2">
-                  <motion.div
-                    transition={transition}
-                    layoutId="active"
-                    className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] "
-                  >
-                    <motion.div layout className="h-full w-max p-2">
-                      {children}
-                    </motion.div>
-                  </motion.div>
-                </div>
-              )}
-            </>
-          )}
+      {active === item && (
+        <motion.div className="absolute top-[calc(100%_-_1.0rem)] left-2 pt-4">
+          <motion.div
+            transition={{ duration: 0.3 }}
+            layoutId="active"
+            className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+          >
+            <motion.div layout className="w-max h-full p-0">
+              {children}
+            </motion.div>
+          </motion.div>
         </motion.div>
       )}
     </div>
   );
 };
 
-export const Menu = ({
-  setActive,
-  children,
+const Cursor = ({
+  position,
 }: {
-  setActive: (item: string | null) => void;
-  children: React.ReactNode;
+  position: { left: number; width: number; opacity: number };
 }) => {
   return (
-    <nav
-      onMouseLeave={() => setActive(null)}
-      className="relative rounded-full  dark:bg-black dark:border-white/[0.2] bg-white  flex justify-center px-2 py-2"
-    >
-      {React.Children.map(children, (child) => (
-        <div className="mx-4">{child}</div>
-      ))}
-    </nav>
+    <motion.div
+      animate={{
+        ...position,
+      }}
+      className="absolute p-2 z-0 h-4 rounded-full bg-[#483d78] md:h-6 mt-2"
+    />
   );
 };
-
