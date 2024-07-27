@@ -2,7 +2,6 @@
 
 import React from "react";
 import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
-import TextOpacity from "../ui/TextOpacity";
 
 export default function InfiniteMovingCardsDemo() {
   return (

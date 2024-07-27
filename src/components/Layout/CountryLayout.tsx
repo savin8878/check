@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import { FiSearch } from "react-icons/fi";
 
@@ -185,7 +186,9 @@ const CountryLayout: React.FC<CountryLayoutProps> = ({
           onClick={handleFlagOpen}
         >
           <div className="h-7 w-7 flex items-center justify-center rounded-full overflow-hidden border-2">
-            <img
+            <Image
+            width={100}
+            height={100}
               src={selectedCountry.flag}
               alt={`${selectedCountry.name} flag`}
               className="h-full w-full object-cover"

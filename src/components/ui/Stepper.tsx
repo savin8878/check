@@ -42,8 +42,8 @@ const Stepper: React.FC = () => {
                 <Image
                   src={step.icon}
                   alt={step.name}
-                  layout="fill"
-                  objectFit="contain"
+                  fill
+                  
                 />
               </div>
               <span className="text-xs mt-1 font-montserrat text-center w-20">

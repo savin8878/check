@@ -7,6 +7,7 @@ import KnowMore from "@/components/Home/KnowMore";
 import HomeMachine from "@/components/Home/HomeMachine";
 import NewsFeature from "@/components/Home/newFeatures/NewFeatures";
 import KnowMachine from "@/components/Home/HomeKnowMachine";
+import HomeTestimonial from "@/components/Home/HomeTestinomial";
 export default function Home() {
   return (
     <main className="bg-[#f5f5f5]">
@@ -20,9 +21,10 @@ export default function Home() {
       />
       <InfiniteMovingCardsDemo />
       <KnowMore />
-      <HomeMachine/>
-      <NewsFeature/>
-      <KnowMachine/>
+      <HomeMachine />
+      <NewsFeature />
+      <KnowMachine />
+      <HomeTestimonial/>
     </main>
   );
 }

@@ -29,9 +29,11 @@ const Application: React.FC<{ onHover: (item: Item) => void; items: Item[] }> = 
             href={`/application/${item.name.toLowerCase().replace(/ /g, '-')}`}
             className="relative block w-full h-full"
           >
-          <img
+          <Image
             src={item.src.src}
             alt={item.alt}
+            height={100}
+            width={100}
             className={`object-cover min-w-full min-h-full transition-transform duration-300 ease-in-out rounded-b-md rounded-t-md ${
               hoveredIndex === index ? 'transform translate-y-[-20%]' : ''
             }`}

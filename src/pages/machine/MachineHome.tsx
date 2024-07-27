@@ -36,7 +36,7 @@ const Machine = () => {
           Book Now
         </button>
         <div className="mt-8 relative w-full h-96">
-          <Image src="/path/to/your/machine-image.png" layout="fill" objectFit="contain" alt="Machine Image" />
+          <Image src="/path/to/your/machine-image.png" fill  alt="Machine Image" />
         </div>
         <div className="mt-8">
         </div>

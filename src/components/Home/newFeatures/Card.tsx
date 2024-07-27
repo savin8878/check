@@ -15,7 +15,6 @@ interface CardProps {
             onClick={handleCloseModal}
           />
         </div>
-        {/* Add more content here */}
       </div>
     );
   };

@@ -60,9 +60,9 @@ export const MenuItem = ({
 
         setActive(item);
       }}
-      className=" z-10 block cursor-pointer px-3 py-1.5 text-xs text-black mix-blend-difference md:px-3 md:py-2 md:text-base"
-    >
-      <motion.p className="text-white hover:text-white font-montserrat">
+      className="z-10 cursor-pointer px-3 font-montserrat py-2 text-black mix-blend-difference md:px-3 md:py-2 md:text-base md:leading-relaxed"
+      >
+      <motion.p className="text-white">
         {item}
       </motion.p>
       {active === item && (
@@ -92,7 +92,7 @@ const Cursor = ({
       animate={{
         ...position,
       }}
-      className="absolute p-2 z-0 h-4 rounded-full bg-[#483d78] md:h-6 mt-2"
+      className="absolute p-4 mt-1 z-0 h-4 rounded-full bg-[#eaeaea] md:h-8 "
     />
   );
 };
