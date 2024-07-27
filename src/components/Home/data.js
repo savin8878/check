@@ -1,12 +1,12 @@
-import HomeKnowmore1 from "../../../public/assets/HomeKnowmore1.jpg"
 import HomeKnowmore2 from "../../../public/assets/HomeKnowmore2.jpg"
 import HomeKnowmore3 from "../../../public/assets/HomeKnowmore3.jpg"
 import HomeKnowmore4 from "../../../public/assets/HomeKnowmore4.jpg"
+import { paperBagMachineImage } from "../../../public/assets";
 export const projects = [
   {
     title: "Matthias Leidinger",
     description: "With over 40 years of industry expertise, Nessco India has a rich history of innovation and reliability. Our extensive experience allows us to deliver high-quality, cutting-edge packaging solutions tailored to our clients' needs. Trust our proven track record and deep industry knowledge to provide exceptional products and services.",
-    src: HomeKnowmore1,
+    src: paperBagMachineImage,
     link: "https://www.ignant.com/2023/03/25/ad2186-matthias-leidingers-photographic-exploration-of-awe-and-wonder/",
     color: "#0d222a",
     expertise: "40+ Years of Industry Expertise",
