@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Machines, SidebarLinks, images } from "../Constants";
+import { Machines, SidebarLinks, images } from "../Constants/Navbar/product-data";
 import Image, { StaticImageData } from "next/image";
 import {
   MdKeyboardArrowRight,

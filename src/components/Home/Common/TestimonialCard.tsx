@@ -22,7 +22,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 }) => {
   return (
     <div className="border-2 bg-gradient-to-b from-[#d7c8fd] to-transparent w-full max-w-sm dark:bg-neutral-800 p-4 rounded-lg shadow-2xl relative">
-      <div className="relative w-full h-40">
+      <div className="relative w-full h-48">
         {videoSrc ? (
           <iframe
             className="w-full h-full rounded-lg"

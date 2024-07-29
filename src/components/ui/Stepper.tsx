@@ -1,58 +1,70 @@
 import React, { useState } from "react";
-import Image from "next/image";
-import stepper_glassicon from "../../../public/assets/stepper_glassicon.png";
-import stepper_bowlicon from "../../../public/assets/stepper_bowlicon.png";
-import stepper_allicon from "../../../public/assets/stepper_allicon.png";
-import stepper_bagicon from "../../../public/assets/stepper_bagicon.png";
-import paperlid from "../../../public/assets/nav_machine_icon/paperlid.png";
-import paperstraw from "../../../public/assets/nav_machine_icon/paperstraw.png";
+import { motion } from "framer-motion";
+import {
+  FaRegPaperPlane,
+  FaCoffee,
+  FaUtensils,
+  FaShoppingBag,
+  FaConciergeBell,
+  FaStarHalf,
+} from "react-icons/fa";
 
-const Stepper: React.FC = () => {
+const Stepper: React.FC<{ onStepChange: (index: number) => void }> = ({
+  onStepChange,
+}) => {
   const [activeStep, setActiveStep] = useState(0);
 
   const steps = [
-    { name: "All paper Products", icon: stepper_allicon },
-    { name: "Paper cup machines", icon: stepper_glassicon },
-    { name: "Paper bowl machines", icon: stepper_bowlicon },
-    { name: "Paper bag machines", icon: stepper_bagicon },
-    { name: "Paper plate machines", icon: paperlid },
-    { name: "Paper straw machines", icon: paperstraw },
+    { name: "All paper Products", icon: <FaRegPaperPlane /> },
+    { name: "Paper cup machines", icon: <FaCoffee /> },
+    { name: "Paper bowl machines", icon: <FaUtensils /> },
+    { name: "Paper bag machines", icon: <FaShoppingBag /> },
+    { name: "Paper plate machines", icon: <FaConciergeBell /> },
+    { name: "Paper straw machines", icon: <FaStarHalf /> },
   ];
 
   const handleClick = (index: number) => {
     setActiveStep(index);
+    onStepChange(index);
   };
 
   return (
-    <div className="sticky bg-[#f5f5f5] top-14 left-0 w-full z-30">
-      <div className="flex  items-center justify-center py-2 relative max-w-sm mx-auto">
+    <div className="sticky bg-[#f5f5f5] top-12 left-0 w-full z-30 ">
+      <div className="flex items-center justify-center py-4 relative max-w-2xl mx-auto">
         {steps.map((step, index) => (
           <React.Fragment key={index}>
-            <div
-              className={`flex flex-col items-center relative ${
-                index === activeStep ? "text-blue-500" : "text-gray-500"
-              } cursor-pointer`}
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className={`flex flex-col items-center relative cursor-pointer ${
+                index === activeStep ? "text-gray-500" : "text-gray-500"
+              }`}
               onClick={() => handleClick(index)}
             >
-              <div
-                className={`relative h-8 w-8 ${
-                  index === activeStep ? "bg-slate-300 rounded-lg" : ""
+              <motion.div
+                initial={{ scale: 0.9 }}
+                animate={{ scale: index === activeStep ? 1.2 : 1 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className={`relative h-12 w-12 flex items-center justify-center text-2xl ${
+                  index === activeStep
+                    ? "bg-blue-100 rounded-full p-2 shadow-lg"
+                    : "p-2"
                 }`}
               >
-                <Image
-                  src={step.icon}
-                  alt={step.name}
-                  fill
-                  
-                />
-              </div>
-              <span className="text-xs mt-1 font-montserrat text-center w-20">
+                {step.icon}
+              </motion.div>
+              <span className="text-xs mt-2 font-montserrat text-center w-24">
                 {step.name}
               </span>
-            </div>
+            </motion.div>
             {index < steps.length - 1 && (
               <div className="flex items-center">
-                <div className="h-8 border-t-2 border-dotted border-white w-8"></div>
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: activeStep > index ? "2rem" : "1rem" }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="h-1 border-t-2"
+                ></motion.div>
               </div>
             )}
           </React.Fragment>

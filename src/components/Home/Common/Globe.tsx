@@ -4,10 +4,15 @@ import React, { useEffect, useRef, useState } from "react";
 import createGlobe from "cobe";
 import { motion } from "framer-motion";
 
-const locations: Record<
-  string,
-  { lat: number; lon: number; country: string; region: string; city: string }
-> = {
+type Location = {
+  lat: number;
+  lon: number;
+  country: string;
+  region: string;
+  city: string;
+};
+
+const locations: Record<string, Location> = {
   India: {
     lat: 20.5937,
     lon: 78.9629,
@@ -81,10 +86,12 @@ const locations: Record<
   // Add more locations as needed
 };
 
-const Globe: React.FC<{ className?: string; country: string }> = ({
-  className,
-  country,
-}) => {
+interface GlobeProps {
+  className?: string;
+  country: string;
+}
+
+const Globe: React.FC<GlobeProps> = ({ className, country }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const focusedLocation = locations[country];
   const [rotationActive, setRotationActive] = useState(true);
@@ -94,6 +101,11 @@ const Globe: React.FC<{ className?: string; country: string }> = ({
     let phi = 0;
     let theta = 0;
     let blinkState = 0;
+    let isDragging = false;
+    let startPhi = 0;
+    let startTheta = 0;
+    let lastX = 0;
+    let lastY = 0;
 
     if (!canvasRef.current) return;
 
@@ -103,44 +115,62 @@ const Globe: React.FC<{ className?: string; country: string }> = ({
       height: 600 * 2,
       phi: 0,
       theta: 0,
-      dark: 1,
+      dark: 0,
       diffuse: 1.2,
-      mapSamples: 16000,
+      mapSamples: 40000,
       mapBrightness: 6,
       baseColor: [1, 1, 1],
       markerColor: [1, 0.1, 0.1],
       glowColor: [1, 1, 1],
       markers: focusedLocation
-        ? [{ location: [focusedLocation.lat, focusedLocation.lon], size: 0.03 }]
+        ? [{ location: [focusedLocation.lat, focusedLocation.lon], size: 0.1 }] // Increased size from 0.03 to 0.1
         : [],
       onRender: (state) => {
-        if (rotationActive) {
-          state.phi = phi;
-          state.theta = theta;
-          phi += 0.005; // Slow rotation
-        } else {
-          // Focus on the customer's country
-          const targetPhi = (90 - focusedLocation.lat) * (Math.PI / 180);
-          const targetTheta = (focusedLocation.lon + 180) * (Math.PI / 180);
-          state.phi = targetPhi;
-          state.theta = targetTheta;
+        state.phi = phi;
+        state.theta = theta;
 
-          // Calculate marker position in canvas coordinates
-          const x =
-            (Math.sin(targetPhi) * Math.cos(targetTheta) + 1) * (600 / 2);
-          const y =
-            (Math.sin(targetPhi) * Math.sin(targetTheta) + 1) * (600 / 2);
-          setMarkerPosition({ x, y });
+        if (rotationActive) {
+          phi += 0.005; // Slow rotation
         }
 
-        // Advanced Blink effect
         blinkState = (blinkState + 1) % 30; // Slower blink
-        state.markerColor = blinkState < 15 ? [1, 0.1, 0.1] : [1, 1, 1]; // Change color more drastically
+        state.markerColor = blinkState < 15 ? [1, 0.1, 0.1] : [1, 1, 1];
       },
     });
 
+    const onMouseDown = (e: MouseEvent) => {
+      isDragging = true;
+      setRotationActive(false);
+      lastX = e.clientX;
+      lastY = e.clientY;
+      startPhi = phi;
+      startTheta = theta;
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (isDragging) {
+        const deltaX = e.clientX - lastX;
+        const deltaY = e.clientY - lastY;
+        phi = startPhi - deltaY * 0.01;
+        theta = startTheta + deltaX * 0.01;
+      }
+    };
+
+    const onMouseUp = () => {
+      isDragging = false;
+    };
+
+    canvasRef.current.addEventListener("mousedown", onMouseDown);
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+
     return () => {
       globe.destroy();
+      if (canvasRef.current) {
+        canvasRef.current.removeEventListener("mousedown", onMouseDown);
+      }
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
     };
   }, [focusedLocation, rotationActive]);
 
@@ -161,24 +191,47 @@ const Globe: React.FC<{ className?: string; country: string }> = ({
             position: "absolute",
             top: markerPosition.y,
             left: markerPosition.x,
-            transform: "translate(-50%, -50%)", // Center the card at the marker position
-            padding: "20px", // Increased padding for a more spacious feel
-            backgroundColor: "rgba(0, 0, 20, 0.8)", // Slightly darker background for better contrast
-            color: "white",
-            borderRadius: "15px", // More rounded corners for a smoother look
+            transform: "translate(-50%, -50%)",
+            padding: "20px",
+            backgroundColor: "white",
+            color: "black",
+            borderRadius: "15px",
             boxShadow:
-              "12px 12px 24px rgba(0, 0, 0, 0.2), -12px -12px 24px rgba(255, 255, 255, 0.3)", // Advanced neumorphic shadows
+              "12px 12px 24px rgba(0, 0, 0, 0.2), -12px -12px 24px rgba(255, 255, 255, 0.3)",
+            border: "1px solid ",
+            borderBottomLeftRadius: "0",
+            borderBottomRightRadius: "0",
           }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 2 }}
         >
-          <h3 style={{ margin: "0 0 10px 0", fontSize: "1.2em" }}>
-            {focusedLocation.city}
-          </h3>
-          <p style={{ margin: "0", fontSize: "1em" }}>
-            {focusedLocation.region}, {focusedLocation.country}
-          </p>
+          <div
+            style={{
+              position: "relative",
+              marginBottom: "-10px",
+            }}
+          >
+            <h3 style={{ margin: "0 0 10px 0", fontSize: "1.2em" }}>
+              {focusedLocation.city}
+            </h3>
+            <p style={{ margin: "0", fontSize: "1em" }}>
+              {focusedLocation.region}, {focusedLocation.country}
+            </p>
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              bottom: "-10px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "0",
+              height: "0",
+              borderLeft: "10px solid transparent",
+              borderRight: "10px solid transparent",
+              borderTop: "10px solid white",
+            }}
+          ></div>
         </motion.div>
       )}
     </div>

@@ -1,8 +1,8 @@
 "use client";
 
-import styles from "./page.module.css";
+import styles from "./Styles/page.module.css";
 import { projects } from "./data";
-import Card from "./Card";
+import Card from "./Common/Card";
 import { useScroll } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";

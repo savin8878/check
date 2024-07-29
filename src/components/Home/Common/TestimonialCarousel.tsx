@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import TestimonialCard from "./TestimonialCard";
 import Globe from "./Globe";
-import machine from "../../../public/assets/HomeKnowmore3.jpg";
+import machine from "../../../../public/assets/HomeKnowmore3.jpg";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import Image from "next/image";
 
@@ -94,13 +94,7 @@ const testimonials = [
 const TestimonialCarousel: React.FC = () => {
   const [current, setCurrent] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 3000);
 
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="flex flex-col md:flex-row w-full h-full">
@@ -108,7 +102,7 @@ const TestimonialCarousel: React.FC = () => {
         <div className="relative w-full max-w-sm">
           <div className="overflow-hidden w-full">
             <div
-              className="flex transition-transform ease-in-out duration-300"
+              className="flex transition-transform ease-in-out duration-1000"
               style={{ transform: `translateX(-${current * 100}%)` }}
             >
               {testimonials.map((testimonial, index) => (
@@ -133,7 +127,7 @@ const TestimonialCarousel: React.FC = () => {
             {testimonials.map((testimonial, index) => (
               <button
                 key={index}
-                className="flex items-center gap-2 p-1 border rounded-full hover:bg-gray-100 transition duration-300 ease-in-out"
+                className="flex items-center gap-2 p-1 border rounded-full hover:bg-gray-100 transition duration-1000 ease-in-out"
               >
                 <Image
                   src={testimonial.flagSrc}

@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+
+import React, { useState } from "react";
 import Stepper from "../ui/Stepper";
 import Card from "../OurMachine/Card";
 import {
@@ -17,7 +18,10 @@ import {
   paperstraw,
 } from "../../../public/assets";
 import { FaCircleNotch } from "react-icons/fa";
+
 const HomeMachine: React.FC = () => {
+  const [activeStep, setActiveStep] = useState(0);
+
   const cards = [
     {
       firstname: "Servo Driven",
@@ -106,157 +110,22 @@ const HomeMachine: React.FC = () => {
         },
       ],
     },
-    {
-      firstname: "Flexo",
-      secondname: "Printing Machine",
-      description:
-        "This machine has an accurate color printing process as it uses rolling materials. It has meter counter that can set printing quantity and color usability as per utility. This machine is equipped with hydraulic systems which assists independent unwinding and rewinding of paper roll. One can complete whole roll to roll printing process in one machine including unwinding (feeding paper roll), printing in various colors, infrared drying and rewinding (assorting printed paper in one roll) as well. Nessco flexographic machine supports multi-colour printing and is equipped with ultraviolet infrared drying devices which are fixed at each print unit.",
-      image: paperFlexoMachineImage,
-      title: "Flexo Printing Machine",
-      speed: 120,
-      unit: "PCS/MIN",
-      icon: paperbowl,
-      items: [
-        {
-          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
-          text: "High-Speed Synchronized",
-        },
-        {
-          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
-          text: "Advanced Sealing Technology",
-        },
-        {
-          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
-          text: "Two-Step Curling Process",
-        },
-        {
-          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
-          text: "Comprehensive Control System",
-        },
-      ],
-    },
-    {
-      firstname: "High Speed",
-      secondname: "",
-      description: "",
-      image: paperLunchBoxMachine,
-      title: "High Speed Paper Cup Machine ",
-      speed: 170,
-      unit: "PCS/MIN",
-      icon: paperlid,
-      items: [
-        {
-          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
-          text: "High-Speed Synchronized Servos",
-        },
-        {
-          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
-          text: "Advanced Sealing Technology",
-        },
-        {
-          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
-          text: "Two-Step Curling Process",
-        },
-        {
-          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
-          text: "Comprehensive Control System with PLC + HMI",
-        },
-      ],
-    },
-    {
-      firstname: "High Speed",
-      secondname: "",
-      description: "",
-      image: paperStrawMachine,
-      title: "High Speed Paper Cup Machine ",
-      speed: 170,
-      unit: "PCS/MIN",
-      icon: paperstraw,
-      items: [
-        {
-          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
-          text: "High-Speed Synchronized Servos",
-        },
-        {
-          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
-          text: "Advanced Sealing Technology",
-        },
-        {
-          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
-          text: "Two-Step Curling Process",
-        },
-        {
-          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
-          text: "Comprehensive Control System with PLC + HMI",
-        },
-      ],
-    },
-    {
-      firstname: "High Speed",
-      secondname: "",
-      description: "",
-      image: fullyAutomaticBagMachineImage,
-      title: "High Speed Paper Cup Machine ",
-      speed: 170,
-      unit: "PCS/MIN",
-      icon: papercup,
-      items: [
-        {
-          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
-          text: "High-Speed Synchronized Servos",
-        },
-        {
-          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
-          text: "Advanced Sealing Technology",
-        },
-        {
-          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
-          text: "Two-Step Curling Process",
-        },
-        {
-          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
-          text: "Comprehensive Control System with PLC + HMI",
-        },
-      ],
-    },
-    {
-      firstname: "High Speed",
-      secondname: "",
-      description: "",
-      image: paperBagMachineImage,
-      title: "High Speed Paper Cup Machine  ",
-      speed: 170,
-      unit: "PCS/MIN",
-      icon: paperbowl,
-      items: [
-        {
-          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
-          text: "High-Speed Synchronized Servos",
-        },
-        {
-          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
-          text: "Advanced Sealing Technology",
-        },
-        {
-          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
-          text: "Two-Step Curling Process",
-        },
-        {
-          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
-          text: "Comprehensive Control System with PLC + HMI",
-        },
-      ],
-    },
+    // Add more cards as needed
   ];
 
+  const filteredCards = activeStep === 0 ? cards : cards.filter(card => {
+    if (activeStep === 1) return card.title.includes("Cup");
+    if (activeStep === 2) return card.title.includes("Bowl");
+    if (activeStep === 3) return card.title.includes("Bag");
+    if (activeStep === 4) return card.title.includes("Plate");
+    if (activeStep === 5) return card.title.includes("Straw");
+  });
+
   return (
-    <div
-      className="container h-full
-     mt-14 mx-auto px-4"
-    >
-      <Stepper />
+    <div className="container h-full mt-14 mx-auto px-4">
+      <Stepper onStepChange={setActiveStep} />
       <div className="grid h-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-4">
-        {cards.map((card, index) => (
+        {filteredCards.map((card, index) => (
           <Card
             key={index}
             firstname={card.firstname}

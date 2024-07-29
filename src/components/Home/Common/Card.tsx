@@ -1,11 +1,11 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
-import styles from "./style.module.css";
+import styles from "../Styles/style.module.css";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { FaIndustry } from "react-icons/fa";
-import Modal from "../ui/Modal"; // Import the Modal component
+import Modal from "../../ui/Modal"; // Import the Modal component
 
 interface CardProps {
   i: number;

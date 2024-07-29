@@ -3,36 +3,61 @@ import Image from "next/image";
 import React, { useState, useCallback, memo, useEffect, useRef } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Carousel from "./Carousel";
+import Carousel from "./Common/Carousel";
 import Manufacturing from "../../../public/assets/Manufacturing.png";
+import Link from "next/link";
 
 interface NavLinkProps {
-  href: string;
   text: string;
   index: number;
   activeLink: number;
   handleMouseEnter: (index: number) => void;
   handleMouseLeave: () => void;
+  handleClick: () => void;
 }
 
 const NavLink: React.FC<NavLinkProps> = memo(
-  ({ href, text, index, activeLink, handleMouseEnter, handleMouseLeave }) => (
-    <a
-      href={href}
+  ({
+    text,
+    index,
+    activeLink,
+    handleMouseEnter,
+    handleMouseLeave,
+    handleClick,
+  }) => (
+    <Link
+      href="#"
+      scroll={false}
       className={`text-gray-600 hover:text-black ${
         activeLink === index ? "border-b-2 border-red-600" : ""
       }`}
       onMouseEnter={() => handleMouseEnter(index)}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
     >
       {text}
-    </a>
+    </Link>
   )
 );
 
 NavLink.displayName = "NavLink";
 
-const Hero: React.FC = () => {
+NavLink.displayName = "NavLink";
+
+interface HeroProps {
+  refs: {
+    heroRef: React.RefObject<HTMLDivElement>;
+    aboutUsRef: React.RefObject<HTMLDivElement>;
+    infiniteCardsRef: React.RefObject<HTMLDivElement>;
+    knowMoreRef: React.RefObject<HTMLDivElement>;
+    homeMachineRef: React.RefObject<HTMLDivElement>;
+    newsFeatureRef: React.RefObject<HTMLDivElement>;
+    knowMachineRef: React.RefObject<HTMLDivElement>;
+    homeTestimonialRef: React.RefObject<HTMLDivElement>;
+  };
+}
+
+const Hero: React.FC<HeroProps> = ({ refs }) => {
   const [activeLink, setActiveLink] = useState<number>(0);
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
   const videoRef = useRef<HTMLDivElement | null>(null);
@@ -44,6 +69,10 @@ const Hero: React.FC = () => {
   const handleMouseLeave = useCallback(() => {
     setActiveLink(-1);
   }, []);
+
+  const handleClick = (ref: React.RefObject<HTMLDivElement>) => () => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -72,10 +101,10 @@ const Hero: React.FC = () => {
   const videoX = useTransform(scrollY, [0, 300], ["0%", "-25%"]);
 
   return (
-    <div className="relative bg-[#f5f5f5] max-w-screen-2xl mx-auto m-auto flex flex-col items-center  rounded-lg overflow-hidden min-h-screen w-full">
+    <div className="relative h-screen max-w-screen-2xl mx-auto m-auto flex flex-col items-center overflow-hidden min-h-screen w-full">
       <div className="relative sm:p-8 md:p-2 lg:px-4 w-full flex-wrap">
         <motion.div
-          className="relative w-full md:mt-[3rem] h-[calc(100vh-150px)]  sm:h-[calc(100vh-210px)] rounded-2xl"
+          className="relative w-full md:mt-[3rem] h-[calc(100vh-150px)] sm:h-[calc(100vh-210px)] rounded-2xl"
           ref={videoRef}
           style={{ width: videoWidth, x: videoX, originX: 0.5 }}
         >
@@ -101,14 +130,14 @@ const Hero: React.FC = () => {
         </motion.div>
         <div className="absolute bg-[#f5f5f5] border-2 rounded-3xl px-4 p-0 flex items-center bottom-0 left-8 sm:bottom-10 sm:left-10 md:bottom-20 md:left-20">
           <span className="mr-2">Get a Quote</span>
-          <button className="relative mr-[-0.8rem] right-0  z-10 p-1 text-4xl h-10 w-10 border-2 rounded-full overflow-hidden bg-white text-black transition-all hover:text-white hover:bg-black">
+          <button className="relative mr-[-0.8rem] right-0 z-10 p-1 text-4xl h-10 w-10 border-2 rounded-full overflow-hidden bg-white text-black transition-all hover:text-white hover:bg-black">
             <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 group-hover:translate-x-full group-hover:w-0 group-hover:bg-black group-hover:text-white">
               <MdKeyboardArrowRight />
             </span>
           </button>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row px-4  w-full">
+      <div className="flex flex-col md:flex-row px-4 w-full">
         <div className="w-full md:w-2/5 mx-1 flex flex-col mb-4 md:mb-2">
           <h4 className="text-2xl mx-2 sm:text-3xl md:text-2xl lg:text-4xl font-poppins font-thin">
             FOOD PACKING MACHINES
@@ -123,52 +152,52 @@ const Hero: React.FC = () => {
           />
           <nav className="flex flex-wrap mt-0 space-x-2 sm:space-x-4 px-1 sm:px-2">
             <NavLink
-              href="#machines"
               text="Machines"
               index={0}
               activeLink={activeLink}
               handleMouseEnter={handleMouseEnter}
               handleMouseLeave={handleMouseLeave}
+              handleClick={handleClick(refs.homeMachineRef)}
             />
             <NavLink
-              href="#about-us"
               text="About Us"
               index={1}
               activeLink={activeLink}
               handleMouseEnter={handleMouseEnter}
               handleMouseLeave={handleMouseLeave}
+              handleClick={handleClick(refs.aboutUsRef)}
             />
             <NavLink
-              href="#news"
               text="News"
               index={2}
               activeLink={activeLink}
               handleMouseEnter={handleMouseEnter}
               handleMouseLeave={handleMouseLeave}
+              handleClick={handleClick(refs.newsFeatureRef)}
             />
             <NavLink
-              href="#brands"
               text="Brands"
               index={3}
               activeLink={activeLink}
               handleMouseEnter={handleMouseEnter}
               handleMouseLeave={handleMouseLeave}
+              handleClick={handleClick(refs.knowMoreRef)}
             />
             <NavLink
-              href="#clientele"
               text="Clientele"
               index={4}
               activeLink={activeLink}
               handleMouseEnter={handleMouseEnter}
               handleMouseLeave={handleMouseLeave}
+              handleClick={handleClick(refs.infiniteCardsRef)}
             />
             <NavLink
-              href="#testimonials"
               text="Testimonials"
               index={5}
               activeLink={activeLink}
               handleMouseEnter={handleMouseEnter}
               handleMouseLeave={handleMouseLeave}
+              handleClick={handleClick(refs.homeTestimonialRef)}
             />
           </nav>
         </div>

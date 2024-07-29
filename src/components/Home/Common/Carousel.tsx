@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaGlobe, FaCity, FaRecycle, FaLeaf, FaBuilding } from 'react-icons/fa'; // Update icons as needed
-import styles from "./Carousel.module.css";
+import styles from "../Styles/Carousel.module.css";
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

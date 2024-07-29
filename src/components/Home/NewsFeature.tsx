@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { GrAddCircle } from "react-icons/gr";
-import Carousel from "../Carousel";
-import { newscardcontent } from "../../Constants/index";
-import Modal from "../../ui/Modal";
+import Carousel from "./Common/Carousel";
+import { newscardcontent } from "../Constants/index";
+import Modal from "../ui/Modal";
 
 const NewsFeature: React.FC = () => {
   const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);

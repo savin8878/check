@@ -4,7 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
-import { items, titlesWithImages } from "../Constants";
+import { items, titlesWithImages } from "../Constants/Navbar/about-data";
 
 const AboutLayout = () => {
   const carouselRef = useRef<HTMLDivElement | null>(null);

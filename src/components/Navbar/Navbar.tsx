@@ -3,7 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import AboutLayout from "../Layout/AboutLayout";
 import SupportLayout from "../Layout/SupportLayout";
-import { supporItem } from "@/components/Constants/index";
+import { supporItem } from "@/components/Constants/Navbar/support-data";
+import { DataBankItem } from "../Constants/Navbar/resources-data";
 import ProductLayout from "../Layout/ProductLayout";
 import Image from "next/image";
 import Link from "next/link";
@@ -152,7 +153,7 @@ function Navbar({ className }: { className?: string }) {
           >
             <SupportLayout
               setHoveredItem={() => {}}
-              supporItem={supporItem}
+              supporItem={DataBankItem}
               type="Resources"
             />
           </MenuItem>

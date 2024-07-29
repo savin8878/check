@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import Card from "./newFeatures/Card";
+import Card from "./Common/FeatureCard";
 import { GrAddCircle } from "react-icons/gr";
 import { cardContents } from "../Constants";
 
