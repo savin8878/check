@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import TestimonialCard from "./TestimonialCard";
-import Globe from "./Globe";
+import Globe from "../Globe";
 import machine from "../../../../public/assets/HomeKnowmore3.jpg";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import Image from "next/image";
@@ -94,7 +94,13 @@ const testimonials = [
 const TestimonialCarousel: React.FC = () => {
   const [current, setCurrent] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % testimonials.length);
+    }, 3000);
 
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="flex flex-col md:flex-row w-full h-full">
@@ -102,7 +108,7 @@ const TestimonialCarousel: React.FC = () => {
         <div className="relative w-full max-w-sm">
           <div className="overflow-hidden w-full">
             <div
-              className="flex transition-transform ease-in-out duration-1000"
+              className="flex transition-transform ease-in-out duration-300"
               style={{ transform: `translateX(-${current * 100}%)` }}
             >
               {testimonials.map((testimonial, index) => (
@@ -127,7 +133,8 @@ const TestimonialCarousel: React.FC = () => {
             {testimonials.map((testimonial, index) => (
               <button
                 key={index}
-                className="flex items-center gap-2 p-1 border rounded-full hover:bg-gray-100 transition duration-1000 ease-in-out"
+                onClick={() => setCurrent(index)}
+                className="flex items-center gap-2 p-1 border rounded-full hover:bg-gray-100 transition duration-300 ease-in-out"
               >
                 <Image
                   src={testimonial.flagSrc}
@@ -143,8 +150,8 @@ const TestimonialCarousel: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="w-full md:w-[90%] p-4 flex flex-col justify-center items-center">
-        <div className="flex justify-between w-full mt-2">
+      <div className="w-full md:w-[90%] p-0 flex flex-col justify-center items-center">
+        <div className="flex justify-between w-full mt-0">
           <span className="font-bold text-2xl font-montserrat">
             What our <span className="text-[#422f94]">Customers</span> say
           </span>
@@ -154,9 +161,9 @@ const TestimonialCarousel: React.FC = () => {
             <div className="font-montserrat text-2xl">Satisfied customers</div>
           </div>
         </div>
-        <div className="w-full h-full flex justify-center items-center mt-4">
+        <div className="w-full h-full flex justify-center items-center mt-0">
           <Globe
-            className="w-full h-full"
+            className="w-full h-auto"
             country={testimonials[current].country}
           />
         </div>

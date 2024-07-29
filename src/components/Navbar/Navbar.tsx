@@ -55,7 +55,7 @@ function Navbar({ className }: { className?: string }) {
             alt="Logo"
             width={100}
             height={100}
-            className="h-8 w-full"
+            className="h-[1.5rem] w-full"
           />
         </Link>
       </div>

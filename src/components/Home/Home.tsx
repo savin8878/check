@@ -28,7 +28,7 @@ const NavLink: React.FC<NavLinkProps> = memo(
     <Link
       href="#"
       scroll={false}
-      className={`text-gray-600 hover:text-black ${
+      className={`text-gray-600 hover:text-black hover:font-bold ${
         activeLink === index ? "border-b-2 border-red-600" : ""
       }`}
       onMouseEnter={() => handleMouseEnter(index)}
@@ -101,7 +101,7 @@ const Hero: React.FC<HeroProps> = ({ refs }) => {
   const videoX = useTransform(scrollY, [0, 300], ["0%", "-25%"]);
 
   return (
-    <div className="relative h-screen max-w-screen-2xl mx-auto m-auto flex flex-col items-center overflow-hidden min-h-screen w-full">
+    <div className="relative h-screen max-w-screen-2xl mx-auto m-auto bg-[#f2f2f2f2] flex flex-col items-center overflow-hidden min-h-screen w-full">
       <div className="relative sm:p-8 md:p-2 lg:px-4 w-full flex-wrap">
         <motion.div
           className="relative w-full md:mt-[3rem] h-[calc(100vh-150px)] sm:h-[calc(100vh-210px)] rounded-2xl"
@@ -146,9 +146,9 @@ const Hero: React.FC<HeroProps> = ({ refs }) => {
             src={Manufacturing}
             alt="Manufacturing Image"
             layout="responsive"
-            height={10}
-            width={10}
-            className="w-full pr-6 h-auto object-cover rounded-2xl"
+            height={1}
+            width={1}
+            className="w-full pr-6 h-2 object-cover rounded-2xl"
           />
           <nav className="flex flex-wrap mt-0 space-x-2 sm:space-x-4 px-1 sm:px-2">
             <NavLink

@@ -57,9 +57,9 @@ const RightNavbar: React.FC = memo(() => {
   }, [isFlagOpen, openSearch, profileOpen, accountOpen]);
 
   return (
-    <div className={`w-full max-w-screen-2xl lg:w-1/5 justify-end relative top-0 right-0 ${hoveredItem ? "rounded-t-lg" : "rounded-lg"}`}>
-      <div className="flex items-center gap-4 justify-end h-14 px-4">
-        <span onMouseEnter={handleMouseLeave} className={`w-full h-10 z-30 hidden xl:flex justify-end items-center gap-2 ${hoveredItem ? "text-black" : "text-black"}`}>
+    <div className={`w-full max-w-screen-2xl lg:w-1/5 justify-center relative  top-0 right-0 ${hoveredItem ? "rounded-t-lg" : "rounded-lg"}`}>
+      <div className="flex items-center gap-6 justify-center h-14 px-4">
+        <span onMouseEnter={handleMouseLeave} className={`w-full h-10 z-30 hidden xl:flex justify-end items-center gap-3 ${hoveredItem ? "text-black" : "text-black"}`}>
           <CountryLayout
             isFlagOpen={isFlagOpen}
             setIsFlagOpen={setIsFlagOpen}

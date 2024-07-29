@@ -9,10 +9,10 @@ import NewsFeature from "@/components/Home/NewsFeature";
 import KnowMachine from "@/components/Home/ProductDetails";
 import HomeTestimonial from "@/components/Home/TestimonialsSection";
 import { data } from "@/components/Constants/Navbar/about-data";
+import ClientsSection from "@/components/ClientsSection";
+import HeroSection from "@/components/HeroSection";
 
 export default function Home() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const aboutUsRef = useRef<HTMLDivElement>(null);
   const infiniteCardsRef = useRef<HTMLDivElement>(null);
   const knowMoreRef = useRef<HTMLDivElement>(null);
   const homeMachineRef = useRef<HTMLDivElement>(null);
@@ -22,25 +22,9 @@ export default function Home() {
 
   return (
     <main className="bg-[#f5f5f5]">
-      <Hero
-        refs={{
-          heroRef,
-          aboutUsRef,
-          infiniteCardsRef,
-          knowMoreRef,
-          homeMachineRef,
-          newsFeatureRef,
-          knowMachineRef,
-          homeTestimonialRef,
-        }}
-      />
-      <div ref={aboutUsRef}>
-      <AboutUs
-          heading={data.heading}
-          description={data.description}
-          stats={data.stats}
-          cards={data.cards}
-        />      </div>
+      <HeroSection/>
+      <ClientsSection/>
+      
       <div ref={infiniteCardsRef}>
         <InfiniteMovingCardsDemo />
       </div>

@@ -4,16 +4,9 @@ import {
     FaLightbulb,
     FaRecycle,
   } from "react-icons/fa";
-  import { AiOutlineProduct } from 'react-icons/ai';
-  import { LiaToolsSolid } from 'react-icons/lia';
-  import { IoBarChartOutline } from 'react-icons/io5';
+
   import {
-    papercup,
-    paperplate2,
-    paperbowl,
-    paperlid,
-    paperstraw,
-    paperbag1,
+
     missionImage,
     companyImage,
     strengthImage,
@@ -25,7 +18,6 @@ import {
     fullyAutomaticBagMachineImage,
     PCM110WithPLC,
     paperStrawMachine,
-    BookServiceImage,
     paperLunchBoxMachine,
   } from "../../../../public/assets";
   import HomeAbout1 from "../../../../public/assets/HomeAbout1.png";

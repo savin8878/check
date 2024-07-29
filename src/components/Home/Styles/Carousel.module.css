@@ -66,8 +66,8 @@
 .indicator {
   position: relative;
   display: block;
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   background: gray;
   border-radius: 50%;
   overflow: hidden;
@@ -88,7 +88,7 @@
 .indicator.active {
   width: 40px;
   border-radius: 5px;
-  height: 10px;
+  height: 6px;
 }
 
 .indicator.active .progress {

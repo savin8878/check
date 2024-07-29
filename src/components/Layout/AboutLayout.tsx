@@ -94,12 +94,12 @@ const AboutLayout = () => {
               <div
                 className={`${item.color} flex items-center p-4 rounded-3xl mb-2`}
               >
-                <div className="h-12 w-12 mr-3 flex justify-center items-center text-2xl">
+                <div className="h-12 text-black w-12 mr-3 flex justify-center items-center text-2xl">
                   <item.icon />
                 </div>
                 <div>
-                  <h3 className="text-md font-medium mb-0">{item.title}</h3>
-                  <p className="text-xs line-clamp-3">{item.description}</p>
+                  <h3 className="text-md text-black font-medium mb-0">{item.title}</h3>
+                  <p className="text-xs text-black line-clamp-3">{item.description}</p>
                 </div>
               </div>
             </Link>
