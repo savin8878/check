@@ -4,9 +4,9 @@ import React, { useState, useCallback, memo, useEffect, useRef } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Carousel from "./Common/Carousel";
-import Manufacturing from "../../../public/assets/Manufacturing.png";
+import Manufacturing from "../../../public/assets/Manufacturing.gif";
 import Link from "next/link";
-
+import HomeSign from "../../../public/assets/gifimage.gif"
 interface NavLinkProps {
   text: string;
   index: number;
@@ -39,8 +39,6 @@ const NavLink: React.FC<NavLinkProps> = memo(
     </Link>
   )
 );
-
-NavLink.displayName = "NavLink";
 
 NavLink.displayName = "NavLink";
 
@@ -101,10 +99,10 @@ const Hero: React.FC<HeroProps> = ({ refs }) => {
   const videoX = useTransform(scrollY, [0, 300], ["0%", "-25%"]);
 
   return (
-    <div className="relative h-screen max-w-screen-2xl mx-auto m-auto bg-[#f2f2f2f2] flex flex-col items-center overflow-hidden min-h-screen w-full">
-      <div className="relative sm:p-8 md:p-2 lg:px-4 w-full flex-wrap">
+    <div className="relative h-screen max-w-screen-2xl flex flex-col items-center overflow-hidden min-h-screen w-full">
+      <div className="relative sm:p-8 md:p-2 lg:px-12 w-full flex-wrap">
         <motion.div
-          className="relative w-full md:mt-[3rem] h-[calc(100vh-150px)] sm:h-[calc(100vh-210px)] rounded-2xl"
+          className="relative w-full md:mt-[3rem] h-[calc(100vh-150px)] flex justify-center items-center sm:h-[calc(100vh-210px)] rounded-2xl "
           ref={videoRef}
           style={{ width: videoWidth, x: videoX, originX: 0.5 }}
         >
@@ -124,7 +122,7 @@ const Hero: React.FC<HeroProps> = ({ refs }) => {
             </video>
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="loader"></div>
+              <div className="loader">loading</div>
             </div>
           )}
         </motion.div>
@@ -137,19 +135,20 @@ const Hero: React.FC<HeroProps> = ({ refs }) => {
           </button>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row px-4 w-full">
+      <div className="flex mx-12 flex-col md:flex-row px-10 w-full">
         <div className="w-full md:w-2/5 mx-1 flex flex-col mb-4 md:mb-2">
           <h4 className="text-2xl mx-2 sm:text-3xl md:text-2xl lg:text-4xl font-poppins font-thin">
             FOOD PACKING MACHINES
           </h4>
+          <div className="h-20">
           <Image
             src={Manufacturing}
             alt="Manufacturing Image"
-            layout="responsive"
-            height={1}
-            width={1}
-            className="w-full pr-6 h-2 object-cover rounded-2xl"
+            height={400}
+            width={400}
+            className="w-full -ml-20 -mt-4 h-20 object-cover rounded-2xl"
           />
+          </div>
           <nav className="flex flex-wrap mt-0 space-x-2 sm:space-x-4 px-1 sm:px-2">
             <NavLink
               text="Machines"

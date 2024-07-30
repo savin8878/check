@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
-import Breadcrumb from "./Breadcrumb"; // Adjust the path according to your file structure
 import { motion } from "framer-motion";
-
-interface Item {
-  icon: JSX.Element;
-  text: string;
-}
+import { Item } from "../../type"; // Adjust the path according to your file structure
+import Breadcrumb from "./Breadcrumb";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import PositionAwareButton from "./PositionAwareButton";
 
 interface ModalProps {
   image: StaticImageData;
@@ -44,19 +42,18 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
 }) => {
   useEffect(() => {
-    // Add the no-scroll class to the body
     document.body.classList.add("no-scroll");
-
-    // Cleanup function to remove the no-scroll class
     return () => {
       document.body.classList.remove("no-scroll");
     };
   }, []);
+
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
     { label: title, current: true },
   ];
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999]">
       <motion.div
@@ -84,15 +81,11 @@ const Modal: React.FC<ModalProps> = ({
               alt={title}
               width={600}
               height={400}
-              className="rounded-lg object-contain h-[400px]" // Fixed image height
+              className="rounded-lg object-contain h-[400px]"
             />
-            <div className="flex space-x-4 mt-4">
-              <button className="px-4 py-2 border-2 border-blue-500 text-blue-500 rounded-lg">
-                View Machine
-              </button>
-              <button className="px-4 py-2 border-2 border-purple-500 text-purple-500 rounded-lg">
-                Get a Quote
-              </button>
+            <div className="flex w-[60%] -ml-14 space-x-2 justify-center mt-0">
+              <PositionAwareButton text={"Know Machine"} />
+              <PositionAwareButton text={"Get Qoute"}/>
             </div>
           </motion.div>
           <motion.div

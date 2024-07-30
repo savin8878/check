@@ -9,10 +9,10 @@ import NewsFeature from "@/components/Home/NewsFeature";
 import KnowMachine from "@/components/Home/ProductDetails";
 import HomeTestimonial from "@/components/Home/TestimonialsSection";
 import { data } from "@/components/Constants/Navbar/about-data";
-import ClientsSection from "@/components/ClientsSection";
-import HeroSection from "@/components/HeroSection";
 
 export default function Home() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const aboutUsRef = useRef<HTMLDivElement>(null);
   const infiniteCardsRef = useRef<HTMLDivElement>(null);
   const knowMoreRef = useRef<HTMLDivElement>(null);
   const homeMachineRef = useRef<HTMLDivElement>(null);
@@ -21,26 +21,42 @@ export default function Home() {
   const homeTestimonialRef = useRef<HTMLDivElement>(null);
 
   return (
-    <main className="bg-[#f5f5f5]">
-      <HeroSection/>
-      <ClientsSection/>
-      
-      <div ref={infiniteCardsRef}>
+    <main className="">
+      <Hero
+        refs={{
+          heroRef,
+          aboutUsRef,
+          infiniteCardsRef,
+          knowMoreRef,
+          homeMachineRef,
+          newsFeatureRef,
+          knowMachineRef,
+          homeTestimonialRef,
+        }}
+      />
+      <div className="mx-6" ref={aboutUsRef}>
+      <AboutUs
+          heading={data.heading}
+          description={data.description}
+          stats={data.stats}
+          cards={data.cards}
+        />      </div>
+      <div className="mx-6" ref={infiniteCardsRef}>
         <InfiniteMovingCardsDemo />
       </div>
-      <div ref={knowMoreRef}>
+      <div className="mx-6" ref={knowMoreRef}>
         <KnowMore />
       </div>
-      <div ref={homeMachineRef}>
+      <div className="mx-6" ref={homeMachineRef}>
         <HomeMachine />
       </div>
-      <div ref={newsFeatureRef}>
+      <div className="mx-6" ref={newsFeatureRef}>
         <NewsFeature />
       </div>
-      <div ref={knowMachineRef}>
+      <div className="mx-6" ref={knowMachineRef}>
         <KnowMachine />
       </div>
-      <div ref={homeTestimonialRef}>
+      <div className="mx-6" ref={homeTestimonialRef}>
         <HomeTestimonial />
       </div>
     </main>

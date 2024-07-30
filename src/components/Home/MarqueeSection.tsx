@@ -32,7 +32,7 @@ export default function InfiniteMovingCardsDemo() {
   return (
     <div
       ref={container}
-      className="h-screen flex flex-col antialiased dark:bg-black dark:bg-grid-white/[0.05] justify-center relative overflow-hidden p-8"
+      className="h-screen flex flex-col antialiased justify-center relative overflow-hidden p-8"
     >
       <motion.div style={{ y: springY }} className="flex flex-col space-y-8">
         <div className="flex items-center space-x-4">

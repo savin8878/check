@@ -64,7 +64,7 @@
       @apply border-border;
     }
     body {
-      @apply bg-background bg-gray-50;
+      @apply bg-background ;
     }
 
   }
@@ -144,4 +144,8 @@ html::-webkit-scrollbar {
 }
 .no-scroll {
   overflow: hidden !important;
+}
+
+body{
+  background-color: #f2f2f2;
 }

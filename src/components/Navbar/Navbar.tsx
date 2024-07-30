@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import AboutLayout from "../Layout/AboutLayout";
 import SupportLayout from "../Layout/SupportLayout";
@@ -25,10 +25,23 @@ export default function NavbarDemo() {
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollDirection, setScrollDirection] = useState("down");
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 0) {
+        setScrollDirection("down");
+        setScrolled(true);
+      } else if (currentScrollY < lastScrollY) {
+        setScrollDirection("up");
+        setScrolled(false);
+      }
+
+      lastScrollY = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -40,12 +53,12 @@ function Navbar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "fixed top-0 flex w-full max-w-screen-2xl items-center inset-x-0 mx-auto z-50",
-        scrolled ? "bg-[#f5f5f5]" : "bg-transparent",
+        "fixed flex w-full max-w-screen-2xl items-center inset-x-0 mx-auto z-50 transition-transform duration-300",
+        scrolled && scrollDirection === "down" ? "-translate-y-full" : "translate-y-0 bg-[#f2f2f2] ",
         className
       )}
     >
-      <div className="w-1/5 flex justify-start items-center">
+      <div className="w-1/5 ml-8 flex justify-start items-center">
         <Link
           href="/"
           className="h-10 rounded-2xl lg:ml-2 flex justify-center items-center"
@@ -171,10 +184,9 @@ function Navbar({ className }: { className?: string }) {
           ></MenuItem>
         </Menu>
       </div>
-      <div className="w-1/5 flex items-center justify-end">
+      <div className="w-1/5 mr-8 flex items-center justify-end">
         <RightNavbar />
       </div>
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   FaRegPaperPlane,
@@ -13,6 +13,7 @@ const Stepper: React.FC<{ onStepChange: (index: number) => void }> = ({
   onStepChange,
 }) => {
   const [activeStep, setActiveStep] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState("down");
 
   const steps = [
     { name: "All paper Products", icon: <FaRegPaperPlane /> },
@@ -28,9 +29,34 @@ const Stepper: React.FC<{ onStepChange: (index: number) => void }> = ({
     onStepChange(index);
   };
 
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        setScrollDirection("down");
+      } else if (currentScrollY < lastScrollY) {
+        setScrollDirection("up");
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="sticky bg-[#f5f5f5] top-12 left-0 w-full z-30 ">
-      <div className="flex items-center justify-center py-4 relative max-w-2xl mx-auto">
+    <div
+      className={`sticky bg-[#f2f2f2] ${
+        scrollDirection === "down" ? "top-0" : "top-14"
+      } left-0 w-full z-30 transition-all duration-300`}
+    >
+      <div className="flex items-center justify-center py-2 relative max-w-2xl mx-auto">
         {steps.map((step, index) => (
           <React.Fragment key={index}>
             <motion.div
@@ -45,7 +71,7 @@ const Stepper: React.FC<{ onStepChange: (index: number) => void }> = ({
                 initial={{ scale: 0.9 }}
                 animate={{ scale: index === activeStep ? 1.2 : 1 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className={`relative h-12 w-12 flex items-center justify-center text-2xl ${
+                className={`relative h-8 w-8 flex items-center justify-center text-2xl ${
                   index === activeStep
                     ? "bg-blue-100 rounded-full p-2 shadow-lg"
                     : "p-2"

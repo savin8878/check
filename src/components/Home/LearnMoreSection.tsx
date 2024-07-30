@@ -26,10 +26,10 @@ export default function KnowMore() {
   }, []);
 
   return (
-    <main ref={container} className={styles.main}>
+    <main ref={container} className="cursor-pointer">
       {projects.map((project, i) => {
-        // Calculate targetScale for all items except the last one
-        const targetScale = i < projects.length - 1 ? 1 - (projects.length - i) * 0.1 : 1;
+        const targetScale =
+          i < projects.length - 1 ? 1 - (projects.length - i) * 0.2 : 1;
         return (
           <Card
             url={""}

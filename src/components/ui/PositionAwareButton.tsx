@@ -1,6 +1,7 @@
 // components/PositionAwareButton.tsx
 import React, { useRef } from 'react';
 import styles from './PositionAwareButton.module.css';
+import Link from 'next/link';
 
 interface PositionAwareButtonProps {
   text: string;
@@ -23,14 +24,14 @@ const PositionAwareButton: React.FC<PositionAwareButtonProps> = ({ text }) => {
   };
 
   return (
-    <a
+    <Link
       ref={buttonRef}
       className={styles.btnPosnawr}
-      href="#"
+      href="/"
       onMouseMove={handleMouseMove}
     >
       {text}<span></span>
-    </a>
+    </Link>
   );
 };
 

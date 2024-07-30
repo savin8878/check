@@ -7,21 +7,14 @@ import {
   paperBagMachineImage,
   paperBowlMachineImage,
   paperCupMachineImage,
-  paperStrawMachine,
-  paperFlexoMachineImage,
-  fullyAutomaticBagMachineImage,
-  paperLunchBoxMachine,
   papercup,
   paperbag1,
   paperbowl,
-  paperlid,
-  paperstraw,
 } from "../../../public/assets";
 import { FaCircleNotch } from "react-icons/fa";
 
 const HomeMachine: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
-
   const cards = [
     {
       firstname: "Servo Driven",
@@ -110,16 +103,309 @@ const HomeMachine: React.FC = () => {
         },
       ],
     },
-    // Add more cards as needed
+    {
+      firstname: "Paper Plate",
+      secondname: "Making Machine",
+      description:
+        "We are a leading manufacturer and global supplier of fully automatic Paper Plate machines. Our Disposable Paper Plate Making Machine is designed with advance technologies, which gives this model a compact structure and stable performance. This machine can produce up to 120 disposable paper plates every minute. This machine is self-sufficient with the capacity of performing a chain of functions.",
+      image: paperCupMachineImage,
+      title: "Paper Plate Making Machine",
+      speed: 170,
+      unit: "PCS/MIN",
+      icon: paperbag1,
+      items: [
+        {
+          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
+          text: "designed using advanced technologies",
+        },
+        {
+          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
+          text: "This machine performs embossing, pasting and drying ",
+        },
+        {
+          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
+          text: "Two-Step Curling Process",
+        },
+        {
+          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
+          text: "Comprehensive Control System with PLC + HMI",
+        },
+      ],
+    },
+    {
+      firstname: "Paper Plate",
+      secondname: "Making Machine",
+      description:
+        "We are a leading manufacturer and global supplier of fully automatic Paper Plate machines. Our Disposable Paper Plate Making Machine is designed with advance technologies, which gives this model a compact structure and stable performance. This machine can produce up to 120 disposable paper plates every minute. This machine is self-sufficient with the capacity of performing a chain of functions.",
+      image: paperCupMachineImage,
+      title: "Paper Plate Making Machine",
+      speed: 170,
+      unit: "PCS/MIN",
+      icon: paperbag1,
+      items: [
+        {
+          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
+          text: "designed using advanced technologies",
+        },
+        {
+          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
+          text: "This machine performs embossing, pasting and drying ",
+        },
+        {
+          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
+          text: "Two-Step Curling Process",
+        },
+        {
+          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
+          text: "Comprehensive Control System with PLC + HMI",
+        },
+      ],
+    },
+    {
+      firstname: "Paper Plate",
+      secondname: "Making Machine",
+      description:
+        "We are a leading manufacturer and global supplier of fully automatic Paper Plate machines. Our Disposable Paper Plate Making Machine is designed with advance technologies, which gives this model a compact structure and stable performance. This machine can produce up to 120 disposable paper plates every minute. This machine is self-sufficient with the capacity of performing a chain of functions.",
+      image: paperCupMachineImage,
+      title: "Paper Plate Making Machine",
+      speed: 170,
+      unit: "PCS/MIN",
+      icon: paperbag1,
+      items: [
+        {
+          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
+          text: "designed using advanced technologies",
+        },
+        {
+          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
+          text: "This machine performs embossing, pasting and drying ",
+        },
+        {
+          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
+          text: "Two-Step Curling Process",
+        },
+        {
+          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
+          text: "Comprehensive Control System with PLC + HMI",
+        },
+      ],
+    },
+    {
+      firstname: "Paper Plate",
+      secondname: "Making Machine",
+      description:
+        "We are a leading manufacturer and global supplier of fully automatic Paper Plate machines. Our Disposable Paper Plate Making Machine is designed with advance technologies, which gives this model a compact structure and stable performance. This machine can produce up to 120 disposable paper plates every minute. This machine is self-sufficient with the capacity of performing a chain of functions.",
+      image: paperCupMachineImage,
+      title: "Paper Plate Making Machine",
+      speed: 170,
+      unit: "PCS/MIN",
+      icon: paperbag1,
+      items: [
+        {
+          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
+          text: "designed using advanced technologies",
+        },
+        {
+          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
+          text: "This machine performs embossing, pasting and drying ",
+        },
+        {
+          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
+          text: "Two-Step Curling Process",
+        },
+        {
+          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
+          text: "Comprehensive Control System with PLC + HMI",
+        },
+      ],
+    },
+    {
+      firstname: "Paper Plate",
+      secondname: "Making Machine",
+      description:
+        "We are a leading manufacturer and global supplier of fully automatic Paper Plate machines. Our Disposable Paper Plate Making Machine is designed with advance technologies, which gives this model a compact structure and stable performance. This machine can produce up to 120 disposable paper plates every minute. This machine is self-sufficient with the capacity of performing a chain of functions.",
+      image: paperCupMachineImage,
+      title: "Paper Plate Making Machine",
+      speed: 170,
+      unit: "PCS/MIN",
+      icon: paperbag1,
+      items: [
+        {
+          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
+          text: "designed using advanced technologies",
+        },
+        {
+          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
+          text: "This machine performs embossing, pasting and drying ",
+        },
+        {
+          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
+          text: "Two-Step Curling Process",
+        },
+        {
+          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
+          text: "Comprehensive Control System with PLC + HMI",
+        },
+      ],
+    },
+    {
+      firstname: "Paper Plate",
+      secondname: "Making Machine",
+      description:
+        "We are a leading manufacturer and global supplier of fully automatic Paper Plate machines. Our Disposable Paper Plate Making Machine is designed with advance technologies, which gives this model a compact structure and stable performance. This machine can produce up to 120 disposable paper plates every minute. This machine is self-sufficient with the capacity of performing a chain of functions.",
+      image: paperCupMachineImage,
+      title: "Paper Plate Making Machine",
+      speed: 170,
+      unit: "PCS/MIN",
+      icon: paperbag1,
+      items: [
+        {
+          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
+          text: "designed using advanced technologies",
+        },
+        {
+          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
+          text: "This machine performs embossing, pasting and drying ",
+        },
+        {
+          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
+          text: "Two-Step Curling Process",
+        },
+        {
+          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
+          text: "Comprehensive Control System with PLC + HMI",
+        },
+      ],
+    },
+    {
+      firstname: "Paper Plate",
+      secondname: "Making Machine",
+      description:
+        "We are a leading manufacturer and global supplier of fully automatic Paper Plate machines. Our Disposable Paper Plate Making Machine is designed with advance technologies, which gives this model a compact structure and stable performance. This machine can produce up to 120 disposable paper plates every minute. This machine is self-sufficient with the capacity of performing a chain of functions.",
+      image: paperCupMachineImage,
+      title: "Paper Plate Making Machine",
+      speed: 170,
+      unit: "PCS/MIN",
+      icon: paperbag1,
+      items: [
+        {
+          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
+          text: "designed using advanced technologies",
+        },
+        {
+          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
+          text: "This machine performs embossing, pasting and drying ",
+        },
+        {
+          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
+          text: "Two-Step Curling Process",
+        },
+        {
+          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
+          text: "Comprehensive Control System with PLC + HMI",
+        },
+      ],
+    },
+    {
+      firstname: "Paper Bowl ",
+      secondname: "Making Machine",
+      description:
+        "We are a leading manufacturer and global supplier of fully automatic Paper Plate machines. Our Disposable Paper Plate Making Machine is designed with advance technologies, which gives this model a compact structure and stable performance. This machine can produce up to 120 disposable paper plates every minute. This machine is self-sufficient with the capacity of performing a chain of functions.",
+      image: paperCupMachineImage,
+      title: "Paper Bowl Making Machine",
+      speed: 170,
+      unit: "PCS/MIN",
+      icon: paperbag1,
+      items: [
+        {
+          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
+          text: "designed using advanced technologies",
+        },
+        {
+          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
+          text: "This machine performs embossing, pasting and drying ",
+        },
+        {
+          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
+          text: "Two-Step Curling Process",
+        },
+        {
+          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
+          text: "Comprehensive Control System with PLC + HMI",
+        },
+      ],
+    },
+    {
+      firstname: "Paper Plate",
+      secondname: "Making Machine",
+      description:
+        "We are a leading manufacturer and global supplier of fully automatic Paper Plate machines. Our Disposable Paper Plate Making Machine is designed with advance technologies, which gives this model a compact structure and stable performance. This machine can produce up to 120 disposable paper plates every minute. This machine is self-sufficient with the capacity of performing a chain of functions.",
+      image: paperCupMachineImage,
+      title: "Paper Plate Making Machine",
+      speed: 170,
+      unit: "PCS/MIN",
+      icon: paperbag1,
+      items: [
+        {
+          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
+          text: "designed using advanced technologies",
+        },
+        {
+          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
+          text: "This machine performs embossing, pasting and drying ",
+        },
+        {
+          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
+          text: "Two-Step Curling Process",
+        },
+        {
+          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
+          text: "Comprehensive Control System with PLC + HMI",
+        },
+      ],
+    },
+    {
+      firstname: "Paper Plate",
+      secondname: "Making Machine",
+      description:
+        "We are a leading manufacturer and global supplier of fully automatic Paper Plate machines. Our Disposable Paper Plate Making Machine is designed with advance technologies, which gives this model a compact structure and stable performance. This machine can produce up to 120 disposable paper plates every minute. This machine is self-sufficient with the capacity of performing a chain of functions.",
+      image: paperCupMachineImage,
+      title: "Paper Plate Making Machine",
+      speed: 170,
+      unit: "PCS/MIN",
+      icon: paperbag1,
+      items: [
+        {
+          icon: <FaCircleNotch className="text-blue-500 text-3xl" />,
+          text: "designed using advanced technologies",
+        },
+        {
+          icon: <FaCircleNotch className="text-green-500 text-3xl" />,
+          text: "This machine performs embossing, pasting and drying ",
+        },
+        {
+          icon: <FaCircleNotch className="text-yellow-500 text-3xl" />,
+          text: "Two-Step Curling Process",
+        },
+        {
+          icon: <FaCircleNotch className="text-red-500 text-3xl" />,
+          text: "Comprehensive Control System with PLC + HMI",
+        },
+      ],
+    },
+    
   ];
 
-  const filteredCards = activeStep === 0 ? cards : cards.filter(card => {
-    if (activeStep === 1) return card.title.includes("Cup");
-    if (activeStep === 2) return card.title.includes("Bowl");
-    if (activeStep === 3) return card.title.includes("Bag");
-    if (activeStep === 4) return card.title.includes("Plate");
-    if (activeStep === 5) return card.title.includes("Straw");
-  });
+  const filteredCards =
+    activeStep === 0
+      ? cards
+      : cards.filter((card) => {
+          if (activeStep === 1) return card.title.includes("Cup");
+          if (activeStep === 2) return card.title.includes("Bowl");
+          if (activeStep === 3) return card.title.includes("Bag");
+          if (activeStep === 4) return card.title.includes("Plate");
+          if (activeStep === 5) return card.title.includes("Straw");
+        });
 
   return (
     <div className="container h-full mt-14 mx-auto px-4">

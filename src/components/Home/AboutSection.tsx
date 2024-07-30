@@ -30,13 +30,13 @@ const AboutUs: React.FC<AboutUsProps> = ({
 }) => {
   return (
     <div
-      className="flex mt-16 h-screen bg-[#f5f5f5] max-w-screen-2xl mx-auto font-montserrat flex-col items-center"
+      className="flex mt-16 h-screen bg-[#f2f2f2] max-w-screen-2xl mx-auto font-montserrat  flex-col items-center"
     >
       <motion.div
         className="text-center w-full max-w-6xl"
       >
         <h1 className="text-2xl text-[#483d78]">
-          About <span className="text-red-500 font-black">US</span>
+          About <span className="text-red-500 font-extrabold font-montserrat">US</span>
         </h1>
         <h1 className="text-4xl px-56 py-2">
           {heading.split(" ").map((word, index) =>

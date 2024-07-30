@@ -8,7 +8,6 @@ const HomeTestimonial: React.FC = () => {
           Testimonials
         </h4>
       </div>
-
       <div className="relative mt-8 ">
         <div className="w-full p-6">
           <TestimonialCarousel />

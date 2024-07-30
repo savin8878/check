@@ -1,14 +1,9 @@
-"use client";
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import Modal from "../ui/Modal";
-
-interface Item {
-  icon: JSX.Element;
-  text: string;
-}
+import { Item } from "../../type"; // Adjust the path according to your file structure
 
 interface CardProps {
   firstname: string;
@@ -40,14 +35,16 @@ const Card: React.FC<CardProps> = ({
   useEffect(() => {
     if (buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
-      setButtonPosition({ top: rect.top + window.scrollY, left: rect.left + window.scrollX });
+      setButtonPosition({
+        top: rect.top + window.scrollY,
+        left: rect.left + window.scrollX,
+      });
     }
   }, [isModalOpen]);
 
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
   };
-
 
   return (
     <div className="p-1 top-24 px-4 pb-4 bg-white rounded-3xl shadow-md relative">
@@ -73,7 +70,7 @@ const Card: React.FC<CardProps> = ({
           +
         </button>
       </div>
-      <div className="h-40 relative rounded-lg overflow-hidden">
+      <div className="h-40 relative rounded-3xl overflow-hidden">
         <Image
           src={image}
           alt={title}

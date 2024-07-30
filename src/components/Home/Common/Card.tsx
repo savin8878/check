@@ -1,11 +1,12 @@
+// Card component (Card.tsx)
+
 "use client";
 
 import Image, { StaticImageData } from "next/image";
 import styles from "../Styles/style.module.css";
 import { useTransform, motion, useScroll } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import {useRef} from "react";
 import { FaIndustry } from "react-icons/fa";
-import Modal from "../../ui/Modal"; // Import the Modal component
 
 interface CardProps {
   i: number;
@@ -14,7 +15,8 @@ interface CardProps {
   src: StaticImageData;
   url: string;
   color: string;
-  expertise: string;
+  expertiseExperience: string;
+  expertiseAbout: string;
   icon: string;
   progress: any;
   range: number[];
@@ -28,7 +30,8 @@ const Card: React.FC<CardProps> = ({
   src,
   url,
   color,
-  expertise,
+  expertiseExperience,
+  expertiseAbout,
   progress,
   range,
   targetScale,
@@ -41,27 +44,8 @@ const Card: React.FC<CardProps> = ({
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
-  const [isModalOpen, setModalOpen] = useState(false);
 
-  useEffect(() => {
-    if (buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect();
-      setButtonPosition({
-        top: rect.top + window.scrollY,
-        left: rect.left + window.scrollX,
-      });
-    }
-  }, [isModalOpen]);
 
-  const handleModalOpen = () => {
-    setModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setModalOpen(false);
-  };
 
   return (
     <div ref={container} className={styles.cardContainer}>
@@ -75,16 +59,17 @@ const Card: React.FC<CardProps> = ({
       >
         <div className={styles.body}>
           <div className={styles.imageContainer}>
-            <div className={styles.expertiseContainer}>
-              <FaIndustry className="text-white flex items-center justify-end text-center z-50" size={24} />
-              <span
-                style={{
-                  backgroundColor: color,
-                }}
-                className="absolute rounded-b-3xl pl-4 rounded-l-none font-montserrat w-60 top-0 left-0 flex h-40 items-center justify-center z-30"
-              >
-                {expertise}
-              </span>
+            <div
+              style={{
+                backgroundColor: color,
+              }}
+              className={styles.expertiseContainer}
+            >
+              <FaIndustry className={`${styles.icon} text-white`} size={24} />
+              <div className={styles.expertiseText}>
+                <div className="">{expertiseExperience}</div>
+                <div className="text-red-600">{expertiseAbout}</div>
+              </div>
             </div>
             <motion.div className={styles.inner} style={{ scale: imageScale }}>
               <Image fill src={src} alt="image" />
@@ -112,26 +97,7 @@ const Card: React.FC<CardProps> = ({
             </span>
           </div>
         </div>
-        <button
-          ref={buttonRef}
-          onClick={handleModalOpen}
-          className={styles.plusButton}
-        >
-          +
-        </button>
       </motion.div>
-
-      {isModalOpen && (
-        <Modal
-          image={src}
-          title={title}
-          firstname="First Name"
-          secondname="Second Name"
-          description={description}
-          items={[]} // Replace with actual items if available
-          onClose={handleModalClose}
-        />
-      )}
     </div>
   );
 };
