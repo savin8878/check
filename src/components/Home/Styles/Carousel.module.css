@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   background: rgb(255, 255, 255);
-  border-radius:15px;
+  border-radius:24px;
   overflow: hidden;
   transform: translateX(-50%) scale(0);
   opacity: 0;
@@ -37,11 +37,10 @@
 
 .icon {
   flex-shrink: 0;
-  width: 100px; /* Adjust icon size */
+  width:200px; /* Adjust icon size */
   height: 90px;
-  margin-left: 20px; /* Space between icon and text */
+  margin-left:5px; /* Space between icon and text */
   display: flex;
-  justify-content:center;
   align-items: center;
 }
 

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useRef } from "react";
 import Hero from "@/components/Home/Home";
 import AboutUs from "@/components/Home/AboutSection";
@@ -35,12 +35,13 @@ export default function Home() {
         }}
       />
       <div className="mx-6" ref={aboutUsRef}>
-      <AboutUs
+        <AboutUs
           heading={data.heading}
           description={data.description}
           stats={data.stats}
           cards={data.cards}
-        />      </div>
+        />
+      </div>
       <div className="mx-6" ref={infiniteCardsRef}>
         <InfiniteMovingCardsDemo />
       </div>

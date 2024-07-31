@@ -20,7 +20,17 @@ const config: Config = {
         "2xl": "1400px",
       },
     },
+    variants: {
+      extend: {
+        scale: ['hover'],
+      },
+    },
     extend: {
+      scale: {
+        '100':'2.0',
+        '90': '1.2', // 90% of the original size
+        '80':'1.05'
+      },
       fontWeight: {
         'extra-bold': '950', // Custom weight if needed, though 900 is typically the max
       },

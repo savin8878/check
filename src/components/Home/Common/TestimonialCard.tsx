@@ -21,7 +21,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   videoSrc,
 }) => {
   return (
-    <div className="border-2 bg-gradient-to-b from-[#d7c8fd] to-transparent w-full max-w-sm dark:bg-neutral-800 p-4 rounded-lg shadow-2xl relative">
+    <div className="border-2 bg-gradient-to-b from-[#d7c8fd] to-transparent w-full max-w-sm dark:bg-neutral-800 p-4 rounded-3xl relative">
       <div className="relative w-full h-48">
         {videoSrc ? (
           <iframe
@@ -36,7 +36,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           <Image
             src={imageSrc}
             alt={name}
-            className="w-full h-full rounded-lg object-cover"
+            className="w-full h-full rounded-3xl object-cover"
             width={380}
             height={260}
           />

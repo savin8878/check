@@ -4,9 +4,8 @@ import React, { useState, useCallback, memo, useEffect, useRef } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Carousel from "./Common/Carousel";
-import Manufacturing from "../../../public/assets/Manufacturing.gif";
+import Manufacturing from "../../../public/assets/Manufacturing2.gif";
 import Link from "next/link";
-import HomeSign from "../../../public/assets/gifimage.gif"
 interface NavLinkProps {
   text: string;
   index: number;
@@ -26,9 +25,9 @@ const NavLink: React.FC<NavLinkProps> = memo(
     handleClick,
   }) => (
     <Link
-      href="#"
+      href=""
       scroll={false}
-      className={`text-gray-600 hover:text-black hover:font-bold ${
+      className={`text-black hover:font-bold custome-scale-90 ${
         activeLink === index ? "border-b-2 border-red-600" : ""
       }`}
       onMouseEnter={() => handleMouseEnter(index)}
@@ -102,54 +101,56 @@ const Hero: React.FC<HeroProps> = ({ refs }) => {
     <div className="relative h-screen max-w-screen-2xl flex flex-col items-center overflow-hidden min-h-screen w-full">
       <div className="relative sm:p-8 md:p-2 lg:px-12 w-full flex-wrap">
         <motion.div
-          className="relative w-full md:mt-[3rem] h-[calc(100vh-150px)] flex justify-center items-center sm:h-[calc(100vh-210px)] rounded-2xl "
+          className=" md:mt-[3rem] h-[calc(100vh-150px)] flex justify-center items-center sm:h-[calc(100vh-210px)] rounded-2xl "
           ref={videoRef}
           style={{ width: videoWidth, x: videoX, originX: 0.5 }}
         >
           {isVideoLoaded ? (
             <video
               id="background-video"
-              className="w-full h-full object-cover rounded-2xl"
+              className="w-full h-full object-cover rounded-3xl"
               autoPlay
               loop
               muted
               playsInline
               preload="metadata"
             >
-              <source src="video/bg.mp4" type="video/mp4" />
+              <source src="video/BgHome.mp4" type="video/mp4" />
               <source src="video/bg.webm" type="video/webm" />
               <source src="video/bg.ogv" type="video/ogg" />
             </video>
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="loader">loading</div>
+              <div className="loader"></div>
             </div>
           )}
         </motion.div>
-        <div className="absolute bg-[#f5f5f5] border-2 rounded-3xl px-4 p-0 flex items-center bottom-0 left-8 sm:bottom-10 sm:left-10 md:bottom-20 md:left-20">
-          <span className="mr-2">Get a Quote</span>
-          <button className="relative mr-[-0.8rem] right-0 z-10 p-1 text-4xl h-10 w-10 border-2 rounded-full overflow-hidden bg-white text-black transition-all hover:text-white hover:bg-black">
-            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 group-hover:translate-x-full group-hover:w-0 group-hover:bg-black group-hover:text-white">
-              <MdKeyboardArrowRight />
-            </span>
-          </button>
+        <div className="absolute rounded-3xl px-4 p-0 flex items-center bottom-0 left-8 sm:bottom-10 sm:left-10 md:bottom-20 md:left-20">
+          <div className="btn-common border-2 border-white rounded-xl">
+            <span className="text-14 pl-2">GET QOUTES</span>
+            <button className="btn-icon bg-[#483d78] rounded-full">
+              <span>
+                <MdKeyboardArrowRight className="text-white" />
+              </span>
+            </button>
+          </div>
         </div>
       </div>
-      <div className="flex mx-12 flex-col md:flex-row px-10 w-full">
+      <div className="flex my-2 mx-12 flex-col md:flex-row px-10 w-full">
         <div className="w-full md:w-2/5 mx-1 flex flex-col mb-4 md:mb-2">
-          <h4 className="text-2xl mx-2 sm:text-3xl md:text-2xl lg:text-4xl font-poppins font-thin">
+          <h4 className="text-2xl mx-2 md:text-2xl lg:text-3xl font-montserrat font-thin">
             FOOD PACKING MACHINES
           </h4>
           <div className="h-20">
-          <Image
-            src={Manufacturing}
-            alt="Manufacturing Image"
-            height={400}
-            width={400}
-            className="w-full -ml-20 -mt-4 h-20 object-cover rounded-2xl"
-          />
+            <Image
+              src={Manufacturing}
+              alt="Manufacturing Image"
+              height={100}
+              width={800}
+              className="w-full -mt-4 -ml-20 h-full flex justify-start items-center object-fill rounded-2xl"
+            />
           </div>
-          <nav className="flex flex-wrap mt-0 space-x-2 sm:space-x-4 px-1 sm:px-2">
+          <nav className="flex flex-wrap mt-0 text-sm space-x-2 sm:space-x-4 text-black px-1 sm:px-2">
             <NavLink
               text="Machines"
               index={0}
@@ -200,7 +201,7 @@ const Hero: React.FC<HeroProps> = ({ refs }) => {
             />
           </nav>
         </div>
-        <div className="w-full px-2 md:w-3/5">
+        <div className="w-full px-4 md:w-3/5">
           <Carousel />
         </div>
       </div>

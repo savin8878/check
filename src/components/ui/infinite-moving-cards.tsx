@@ -65,7 +65,7 @@ export const InfiniteMovingCards = ({
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "1s");
+        containerRef.current.style.setProperty("--animation-duration", "10s");
       } else if (speed === "normal") {
         containerRef.current.style.setProperty("--animation-duration", "20s");
       } else {
@@ -78,7 +78,7 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative max-w-7xl overflow-hidden",
         className
       )}
     >
@@ -92,7 +92,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li className="w-[100px] max-w-full relative flex-shrink-0" key={idx}>
-            <Image width={100} height={100} src={item.src} alt={item.alt} className="h-20 w-20 rounded-full object-contain" />
+            <Image width={100} height={100} src={item.src} alt={item.alt} className="h-20 w-20 object-contain" />
           </li>
         ))}
       </ul>

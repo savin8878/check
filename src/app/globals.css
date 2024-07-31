@@ -149,3 +149,18 @@ html::-webkit-scrollbar {
 body{
   background-color: #f2f2f2;
 }
+/* global.css */
+.custom-scale-80 {
+  @apply hover:scale-80 transition-transform duration-200;
+}
+.custom-scale-90 {
+  @apply hover:scale-90 transition-transform duration-200;
+}
+.custom-scale-100 {
+  @apply hover:scale-100 transition-transform duration-200;
+}
+.super-bold-text {
+  font-weight: 900;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, 
+               2px 2px 0 #000, -2px -2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000;
+}

@@ -9,14 +9,23 @@ const trustedBrands = [
   { src: "/assets/Logo_Icons/wendys.jpeg", alt: "Wendy's" },
   { src: "/assets/Logo_Icons/starbucks.png", alt: "Starbucks" },
   { src: "/assets/Logo_Icons/kfc.png", alt: "KFC" },
-];
-
-const partnerBrands = [
   { src: "/assets/Logo_Icons/siemens.jpeg", alt: "Siemens" },
   { src: "/assets/Logo_Icons/omron.png", alt: "Omron" },
   { src: "/assets/Logo_Icons/smc.png", alt: "SMC" },
   { src: "/assets/Logo_Icons/autonics.png", alt: "Autonics" },
   { src: "/assets/Logo_Icons/tessa.jpg", alt: "Tessa" },
+];
+
+const partnerBrands = [
+  { src: "/assets/client-logos/abc-news.png", alt: "Abc-News" },
+  { src: "/assets/client-logos/airfrance.png", alt: "Airfrance" },
+  { src: "/assets/client-logos/allianz.png", alt: "Allianz" },
+  { src: "/assets/client-logos/bbc.png", alt: "BBC" },
+  { src: "/assets/client-logos/cnbc.png", alt: "CNBC" },
+  { src: "/assets/client-logos/gannett.png", alt: "Gannett" },
+  { src: "/assets/client-logos/jaguar.png", alt: "Jaguar" },
+  { src: "/assets/client-logos/linkedin.png", alt: "LinkedIn" },
+  { src: "/assets/client-logos/telegraph.png", alt: "Telegraph" },
 ];
 
 export default function InfiniteMovingCardsDemo() {

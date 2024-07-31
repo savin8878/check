@@ -30,15 +30,15 @@ const AboutUs: React.FC<AboutUsProps> = ({
 }) => {
   return (
     <div
-      className="flex mt-16 h-screen bg-[#f2f2f2] max-w-screen-2xl mx-auto font-montserrat  flex-col items-center"
+      className="flex mt-12 md:space-y-14 h-screen bg-[#f2f2f2] max-w-screen-2xl mx-auto font-montserrat  flex-col items-center"
     >
       <motion.div
         className="text-center w-full max-w-6xl"
       >
         <h1 className="text-2xl text-[#483d78]">
-          About <span className="text-red-500 font-extrabold font-montserrat">US</span>
+          About <span className="text-red-500 super-bold-text font-montserrat">US</span>
         </h1>
-        <h1 className="text-4xl px-56 py-2">
+        <h1 className="text-2xl px-56 py-6">
           {heading.split(" ").map((word, index) =>
             word === "Machine" ? (
               <span key={index} className="text-[#483d73]">
@@ -56,7 +56,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
             </h2>
             <p className="text-base">Machines Sold</p>
           </div>
-          <p className="text-base ml-12 mt-5 text-center ml-18 w-[60%] leading-5">{description}</p>
+          <p className="text-base ml-12 py-4 text-center ml-18 w-[60%] leading-5">{description}</p>
           <div className="text-center">
             <h2 className="text-3xl font-bold text-[#483d73] -mt-3">
               {stats.readyStockMachines}

@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "./Styles/page.module.css";
 import { projects } from "./data";
 import Card from "./Common/Card";
 import { useScroll } from "framer-motion";
@@ -29,7 +28,7 @@ export default function KnowMore() {
     <main ref={container} className="cursor-pointer">
       {projects.map((project, i) => {
         const targetScale =
-          i < projects.length - 1 ? 1 - (projects.length - i) * 0.2 : 1;
+          i < projects.length - 1 ? 1 - (projects.length - i) * 0.1 : 1;
         return (
           <Card
             url={""}

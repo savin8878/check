@@ -7,7 +7,6 @@ import Image from "next/image";
 import Machine from "@/pages/machine/MachineHome";
 const MachineDetails = () => {
   const params = useParams();
-  // Ensure params.id is a string
   const machinename =
     typeof params?.id === "string" ? decodeURIComponent(params.id) : "";
 

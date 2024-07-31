@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Machines, SidebarLinks, images } from "../Constants/Navbar/product-data";
+import {
+  Machines,
+  SidebarLinks,
+  images,
+} from "../Constants/Navbar/product-data";
 import Image, { StaticImageData } from "next/image";
 import {
   MdKeyboardArrowRight,
@@ -8,6 +12,7 @@ import {
   MdKeyboardArrowUp,
 } from "react-icons/md";
 import Link from "next/link";
+import PositionAwareButton from "../ui/PositionAwareButton";
 
 interface ProductLayoutProps {
   setHoveredItem: (item: string | null) => void;
@@ -104,7 +109,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
               <MdKeyboardArrowLeft />
             </button>
           )}
-          <div className="flex flex-wrap pb-8 justify-center overflow-hidden w-full">
+          <div className="flex flex-wrap pb-8 justify-start overflow-hidden w-full">
             {filteredMachines.length <= 6
               ? filteredMachines.map((machine, index) => (
                   <div
@@ -123,9 +128,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                     <Image
                       src={machine.image}
                       alt={machine.name}
-                      className={`object-contain rounded-lg relative z-10 h-32 w-full transition-transform duration-300 ${
-                        hoveredImageIndex === index ? "transform scale-110" : ""
-                      }`}
+                      className={`object-contain transform hover:scale-90 transition-transform duration-200 rounded-lg relative z-10 h-32 w-full `}
                       width={200}
                       height={150}
                     />
@@ -136,7 +139,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                       <a
                         href={`/products/${machine.name}`}
                         onClick={() => handleMouseLeave()}
-                        className="relative text-white bg-red-500 rounded-3xl px-8 p-1 z-20"
+                        className="relative text-white bg-red-500 rounded-3xl px-8 p-1 z-20 transform hover:scale-90 transition-transform duration-300"
                       >
                         Book Now
                       </a>
@@ -149,24 +152,13 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                     <div
                       key={`${machine.name}-${index}`}
                       className="text-center relative w-1/3 p-2"
-                      style={{
-                        animationDelay: `${index * 0.1}s`,
-                        animationDuration: "1s",
-                        animationFillMode: "both",
-                        animationTimingFunction: "ease-in-out",
-                        animationName: "fadeIn",
-                      }}
                       onMouseEnter={() => setHoveredImageIndex(index)}
                       onMouseLeave={() => setHoveredImageIndex(null)}
                     >
                       <Image
                         src={machine.image}
                         alt={machine.name}
-                        className={`object-scale-down relative z-10 transition-transform duration-300 ${
-                          hoveredImageIndex === index
-                            ? "transform scale-110"
-                            : ""
-                        } h-auto w-full`}
+                        className={`relative z-10 h-auto w-full`}
                         width={200}
                         height={150}
                       />
@@ -177,9 +169,9 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                         <a
                           href={`/products/${machine.name}`}
                           onClick={() => handleMouseLeave()}
-                          className="relative text-white bg-red-500 rounded-3xl px-8 p-1 z-20"
+                          className="relative text-white rounded-3xl transform hover:scale-90 transition-transform duration-300 px-8 p-1 z-20"
                         >
-                          Book Now
+                          <PositionAwareButton text={"Book Now"} />
                         </a>
                       </div>
                     </div>
@@ -199,12 +191,12 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
           {sidebarIndex > 0 && (
             <button
               onClick={handleSidebarPrev}
-              className="absolute top-0 left-1/2 transform -translate-x-1/2 p-2 text-xl text-black transition-all hover:text-white hover:bg-black rounded-full bg-white"
+              className="absolute top-0 left-1/2 text-4xl transform -translate-x-1/2 p-0  text-black hover:scale-90 transition-transform duration-200"
             >
               <MdKeyboardArrowUp />
             </button>
           )}
-          <div className="pt-6 space-y-4">
+          <div className="pt-6 space-y-6">
             {SidebarLinks.slice(sidebarIndex, sidebarIndex + 8).map((link) => (
               <div
                 key={link.name}
@@ -212,29 +204,23 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                   setHoveredCategory(link.name);
                   setCurrentIndex(0);
                 }}
-                className={`flex items-center space-x-2 text-lg transition-colors duration-300 cursor-pointer ${
+                className={`flex items-center space-x-4 text-lg transition-colors duration-300 cursor-pointer ${
                   hoveredCategory === link.name
-                    ? "font-montserrat font-bold text-[#483d73]"
+                    ? "font-montserrat text-[#483d73]"
                     : "font-montserrat text-[#483d73]"
                 }`}
               >
                 <div
-                  className={`flex items-center bg-fixed object-contain bg-no-repeat h-6 w-6 justify-center cursor-pointer ${
-                    hoveredCategory === link.name
-                      ? "h-8 w-8 text-[#483d73] font-bold"
-                      : "text-black"
-                  }`}
+                  className={`flex items-center bg-fixed object-contain bg-no-repeat  justify-center cursor-pointer}`}
                 >
                   <Image
-                    className="rounded-full bg-transparent"
+                    className="rounded-full h-6 w-6 transform hover:scale-90 transition-transform duration-300 bg-transparent"
                     src={link.icon}
                     alt="machine icon"
                   />
                 </div>
                 <span
-                  className={`transition duration-300 ${
-                    hoveredCategory === link.name ? "font-semibold" : ""
-                  }`}
+                  className={`transform hover:scale-80 transition-transform duration-100`}
                 >
                   {link.name}
                 </span>
@@ -244,7 +230,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
           {sidebarIndex + 6 < SidebarLinks.length && (
             <button
               onClick={handleSidebarNext}
-              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 p-2 text-xl text-black transition-all hover:text-white hover:bg-black rounded-full bg-white"
+              className="absolute bottom-0 left-1/2 transform text-4xl -translate-x-1/2 p-0 text-black hover:scale-90 transition-transform duration-200"
             >
               <MdKeyboardArrowDown />
             </button>

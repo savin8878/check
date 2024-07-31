@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { FaGlobe, FaCity, FaRecycle, FaLeaf, FaBuilding } from 'react-icons/fa'; // Update icons as needed
 import styles from "../Styles/Carousel.module.css";
-
+import Image from "next/image";
+import image from "../../../../public/assets/image.png"
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const items = [
@@ -43,9 +44,11 @@ const Carousel = () => {
             currentIndex === index ? styles.active : ""
           } ${currentIndex === (index + 1) % items.length ? styles.next : ""}`}
         >
-          <div className={styles.icon}>{item.icon}</div>
+          <div className={styles.icon}>
+            <Image src={image} className="h-28 w-full rounded-3xl" height={200} width={200} alt={"image"}/>
+          </div>
           <div className={styles.content}>
-            <h2 className="font-montserrat">{item.title}</h2>
+            <h2 className="font-montserrat text-sm">{item.title}</h2>
           </div>
         </div>
       ))}

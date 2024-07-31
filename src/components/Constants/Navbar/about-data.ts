@@ -52,6 +52,7 @@ import {
       description:
         "Paper industry adopts biodegradable materials and enhances recycling efforts.",
       color: "bg-green-100",
+      textcolor:"text-green-500",
       icon: FaLeaf,
     },
     {
@@ -59,12 +60,14 @@ import {
       description:
         "Paper industry adopts biodegradable materials and enhances recycling efforts.",
       color: "bg-purple-100",
+      textcolor:"text-yellow-500",
       icon: FaProjectDiagram,
     },
     {
       title: "Innovation",
       description: "New technologies in paper manufacturing increase efficiency.",
       color: "bg-blue-100",
+      textcolor:"text-pink-500",
       icon: FaLightbulb,
     },
     {
@@ -72,6 +75,7 @@ import {
       description:
         "Recycling initiatives in the paper industry have grown significantly.",
       color: "bg-yellow-100",
+      textcolor:"text-blue-500",
       icon: FaRecycle,
     },
   ];

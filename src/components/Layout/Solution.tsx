@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Items,item } from '../Constants/index'; // Adjust the path as necessary
+import { Items, item } from "../Constants/index"; // Adjust the path as necessary
 import { SlArrowRight, SlArrowDown, SlArrowUp } from "react-icons/sl";
-import styles from '../Layout/solution.module.css' // Adjust the path as necessary
+import styles from "../Layout/solution.module.css"; // Adjust the path as necessary
 import Image from "next/image";
-
-
 
 const Solution: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<item>(Items[0]);
@@ -12,8 +10,6 @@ const Solution: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const listRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLParagraphElement | null)[]>([]);
- 
-
 
   const handleScroll = () => {
     if (listRef.current && listRef.current.scrollTop > 0) {
@@ -23,7 +19,7 @@ const Solution: React.FC = () => {
     }
   };
 
-  const handleItemHover = (item:item) => {
+  const handleItemHover = (item: item) => {
     setHoveredItem(item.id);
     setSelectedItem(item);
   };
@@ -43,19 +39,17 @@ const Solution: React.FC = () => {
   const handleItemLeave = () => {
     setHoveredItem(null);
   };
-  
-
 
   useEffect(() => {
     const currentRef = listRef.current;
     if (currentRef) {
-      currentRef.addEventListener('scroll', handleScroll);
-      return () => currentRef.removeEventListener('scroll', handleScroll);
+      currentRef.addEventListener("scroll", handleScroll);
+      return () => currentRef.removeEventListener("scroll", handleScroll);
     }
   }, []);
 
   return (
-    <div className="flex justify-center items-start w-[98vw] max-w-screen-2xl">
+    <div className="flex pb-8 justify-center items-start w-[98vw] max-w-screen-2xl">
       <div className="rounded-b-5xl  h-4/5 w-full relative">
         <div className="flex">
           <div className="p-8 relative w-9/12">
@@ -70,30 +64,38 @@ const Solution: React.FC = () => {
             </div>
             <div className="relative z-10 w-4/5">
               <h2 className="text-6xl font-extrabold text-[#483d73]">
-                {selectedItem.name.split(' ')[0]}
+                {selectedItem.name.split(" ")[0]}
               </h2>
               <h2 className="text-6xl font-extrabold text-red-600">
-                {selectedItem.name.split(' ').slice(1).join(' ')}
+                {selectedItem.name.split(" ").slice(1).join(" ")}
               </h2>
               <div className="w-3/4">
-                <p className="text-sm mt-4 font-montserrat w-auto">
+                <p className="text-sm text-black mt-4 font-montserrat w-auto">
                   {selectedItem.description}
                 </p>
               </div>
             </div>
 
             <div className={styles.buttonContainer}>
-              <button className={styles.customButton}>
-                Know More
-                <SlArrowRight className={styles.customIcon} />
-              </button>
+              <div className="gap-2 flex flex-row">
+                <button className={styles.customButton}>
+                  Know More
+                  <SlArrowRight className={styles.customIcon} />
+                </button>
+                <button className={styles.customButton}>
+                  Know More
+                  <SlArrowRight className={styles.customIcon} />
+                </button>
+              </div>
             </div>
           </div>
           <div className="border-r border-gray-400 p-4 mb-7 mt-5"></div>
           <div className="w-[24%] p-4">
-            <div className="relative">
+            <div className="relative text-black">
               <SlArrowUp
-                className={`${styles.arrowUp} ${isScrolled ? 'visible' : 'invisible'}`}
+                className={`${styles.arrowUp} ${
+                  isScrolled ? "visible" : "invisible"
+                }`}
                 onClick={handleScrollUp}
               />
             </div>
@@ -103,23 +105,24 @@ const Solution: React.FC = () => {
               className={`space-y-3 h-72 overflow-y-auto ${styles.hideScrollbar} -ml-2 mt-4`}
             >
               {Items.map((item, index) => (
-                <p 
+                <p
                   key={item.id}
-                  ref={(el) => { itemRefs.current[index] = el; }} // Update ref assignment
+                  ref={(el) => {
+                    itemRefs.current[index] = el;
+                  }} // Update ref assignment
                   className={`p-2 ${
                     selectedItem.id === item.id || hoveredItem === item.id
-                      ? 'text-[#483d73] font-bold'
-                      : 'text-black'
+                      ? "text-[#483d73] font-bold"
+                      : "text-black"
                   } hover:text-[#483d73] hover:font-bold`}
                   onMouseEnter={() => handleItemHover(item)}
                   onMouseLeave={handleItemLeave}
-                 
                 >
                   {item.name}
                 </p>
               ))}
             </div>
-            <div className="mt-3">
+            <div className="mt-8">
               <SlArrowDown
                 className={`${styles.arrowDown} text-[#483d73]`}
                 onClick={handleScrollDown}

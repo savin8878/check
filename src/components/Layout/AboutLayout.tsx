@@ -56,9 +56,9 @@ const AboutLayout = () => {
   return (
     <div
       ref={containerRef}
-      className="flex w-[98vw] max-w-screen-2xl flex-col md:flex-row items-center justify-center rounded-xl pb-8 h-full px-2 md:px-4"
+      className="flex w-[98vw] py-4 max-w-screen-2xl flex-col md:flex-row items-center justify-center rounded-xl  h-full "
     >
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-screen-lg">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full max-w-screen-lg">
         {titlesWithImages.map((item, index) => (
           <motion.div
             key={index}
@@ -71,11 +71,11 @@ const AboutLayout = () => {
               <Image
                 src={item.image}
                 alt={item.title}
-                className="bg-gray-600 rounded-2xl cursor-pointer w-58 h-56 object-cover"
+                className="bg-gray-600 rounded-2xl cursor-pointer w-58 h-56 object-cover transform hover:scale-80 transition-transform duration-200"
                 width={240}
                 height={240}
               />
-              <p className="mt-2 text-center text-sm font-semibold">
+              <p className="mt-2 text-center font-montserrat text-black hover:text-[#483d78] hover:font-bold text-sm transform hover:scale-90 transition-transform duration-300">
                 {item.title}
               </p>
             </Link>
@@ -92,24 +92,30 @@ const AboutLayout = () => {
           {items.slice(currentIndex, currentIndex + 2).map((item, index) => (
             <Link key={index} href={`/${item.title}`} passHref>
               <div
-                className={`${item.color} flex items-center p-4 rounded-3xl mb-2`}
+                className={`${item.color} hover:scale-80 transition-transform duration-200 flex items-center p-4 rounded-3xl mb-2`}
               >
-                <div className="h-12 text-black w-12 mr-3 flex justify-center items-center text-2xl">
+                <div
+                  className={`h-12 w-12 mr-2 flex justify-center items-center text-lg ${item.textcolor}`}
+                >
                   <item.icon />
                 </div>
                 <div>
-                  <h3 className="text-md text-black font-medium mb-0">{item.title}</h3>
-                  <p className="text-xs text-black line-clamp-3">{item.description}</p>
+                  <h3 className="text-md text-black font-bold mb-0">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-black line-clamp-3">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </Link>
           ))}
         </motion.div>
-        <div className="flex w-full justify-end">
+        <div className="flex w-full justify-center">
           {currentIndex > 0 && (
             <button
               onClick={scrollUp}
-              className="absolute text-2xl top-0 p-2 rounded-full"
+              className="absolute text-2xl text-black top-0 p-2 rounded-full"
             >
               <IoIosArrowUp />
             </button>
@@ -119,7 +125,7 @@ const AboutLayout = () => {
           {currentIndex < items.length - 2 && (
             <button
               onClick={scrollDown}
-              className="absolute bg-transparent flex justify-center items-center rounded-full"
+              className="absolute bg-transparent text-black flex justify-center items-center rounded-full"
             >
               <IoIosArrowDown />
             </button>

@@ -109,7 +109,7 @@ const Cursor = ({
           ease: "easeInOut",
         },
       }}
-      className="absolute z-0 mt-1 h-4 rounded-full bg-[#eaeaea] md:h-8"
+      className="absolute z-0 h-6 rounded-full bg-[#eaeaea] md:h-7 mt-[0.35rem]"
     />
   );
 };

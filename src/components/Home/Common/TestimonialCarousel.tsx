@@ -93,15 +93,6 @@ const testimonials = [
 
 const TestimonialCarousel: React.FC = () => {
   const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="flex flex-col md:flex-row w-full h-full">
       <div className="w-full md:w-1/2 flex justify-center md:justify-start">
@@ -129,7 +120,7 @@ const TestimonialCarousel: React.FC = () => {
               ></button>
             ))}
           </div>
-          <div className="flex flex-wrap gap-2 p-2 mt-2 bg-white shadow-lg rounded-lg">
+          <div className="flex flex-wrap gap-2 p-2 mt-2 bg-white rounded-3xl">
             {testimonials.map((testimonial, index) => (
               <button
                 key={index}

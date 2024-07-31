@@ -1,9 +1,7 @@
-// app/layout.tsx (or your specific layout file)
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-// import Navbar, { NavbarDemo } from '@/components/Navbar/Navbar';
-import "@fontsource/montserrat"; // Defaults to weight 400
+import '@fontsource/montserrat'; // Defaults to weight 400
 import NavbarDemo from '@/components/Navbar/Navbar';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -23,7 +21,7 @@ export default function RootLayout({
       <head>
       </head>
       <body className={inter.className}>
-        <NavbarDemo/>
+        <NavbarDemo />
         {children}
       </body>
     </html>

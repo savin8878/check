@@ -149,7 +149,7 @@ const SupportLayout: React.FC<SupportLayoutProps> = ({
         onClick={() => handleArrowClick("left")}
         className="absolute z-10 left-0 p-0 text-4xl ml-2 h-10 w-10 border-2 rounded-full overflow-hidden bg-white text-black transition-all before:absolute before:bottom-0 before:right-0 before:top-0 before:z-0 before:w-0 before:bg-black before:transition-all before:duration-75 hover:text-white hover:before:left-0 hover:before:w-full"
       >
-        <span className="relative z-10">
+        <span className="relative z-10 custom-scale">
           <MdKeyboardArrowLeft />
         </span>
       </button>
@@ -161,7 +161,7 @@ const SupportLayout: React.FC<SupportLayoutProps> = ({
           >
             <div
               style={backgroundImageStyle}
-              className="card relative"
+              className="card relative custom-scale-80 "
               draggable
               onDragStart={handleDragStart}
               onDragOver={handleDragOver}
@@ -179,7 +179,7 @@ const SupportLayout: React.FC<SupportLayoutProps> = ({
                 draggable="false"
               />
             </div>
-            <span className="font-montserrat mt-4 font-medium hover:text-[#483d78] hover:font-bold text-16">
+            <span className="font-montserrat custom-scale-90 text-black mt-4 font-medium hover:text-[#483d78] hover:font-bold text-16">
               {card.title}
             </span>
           </li>
@@ -191,7 +191,7 @@ const SupportLayout: React.FC<SupportLayoutProps> = ({
           >
             <div
               style={backgroundImageStyle}
-              className="card relative"
+              className="card relative custom-scale-80"
               draggable
               onDragStart={handleDragStart}
               onDragOver={handleDragOver}
@@ -209,7 +209,7 @@ const SupportLayout: React.FC<SupportLayoutProps> = ({
                 draggable="false"
               />
             </div>
-            <span className="font-montserrat mt-4 font-medium hover:text-[#483d78] hover:font-bold text-16">
+            <span className="font-montserrat custom-scale-90 text-black mt-4 font-medium hover:text-[#483d78] hover:font-bold text-16">
               {card.title}
             </span>
           </li>
