@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Items,item } from '../Constants/index'; // Adjust the path as necessary
 import { SlArrowRight, SlArrowDown, SlArrowUp } from "react-icons/sl";
 import styles from '../Layout/solution.module.css' // Adjust the path as necessary
+import Image from "next/image";
 
 
 
@@ -59,9 +60,11 @@ const Solution: React.FC = () => {
         <div className="flex">
           <div className="p-8 relative w-9/12">
             <div className="relative ml-10">
-              <img
+              <Image
                 src={selectedItem.img.src}
                 alt={selectedItem.name}
+                height={100}
+                width={100}
                 className="absolute -right-9 rounded-lg w-72 h-72 object-cover"
               />
             </div>

@@ -251,7 +251,9 @@ const page: React.FC = () => {
 
   return (
     <div className="container mt-14 mx-auto px-4">
-      <Stepper />
+      <Stepper onStepChange={function (index: number): void {
+        throw new Error("Function not implemented.");
+      } } />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-4">
         {cards.map((card, index) => (
           <Card

@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { Machines } from "@/components/Constants/index";
+import { Machines } from "@/components/Constants/Navbar/product-data";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Machine from "@/pages/machine/MachineHome";
