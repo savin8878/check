@@ -1,15 +1,17 @@
 import type { Config } from "tailwindcss";
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
-const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config: Config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -22,23 +24,25 @@ const config: Config = {
     },
     variants: {
       extend: {
-        scale: ['hover'],
+        scale: ["hover"],
       },
     },
     extend: {
       scale: {
-        '100':'2.0',
-        '90': '1.2', // 90% of the original size
-        '80':'1.05'
+        "100": "2.0",
+        "90": "1.2", // 90% of the original size
+        "80": "1.05",
       },
       fontWeight: {
-        'extra-bold': '950', // Custom weight if needed, though 900 is typically the max
+        "extra-bold": "950", // Custom weight if needed, though 900 is typically the max
       },
       fontFamily: {
-        "montserrat": ["Montserrat", "Poppins"],
-        poppins: ['Poppins', 'sans-serif'],
+        montserrat: ["Montserrat", "Poppins"],
+        poppins: ["Poppins", "Montserrat"],
+        alexBrush: ["Alex Brush", 'Poppins'],
       },
       fontSize: {
+        18: "18px",
         16: "16px",
         14: "14px",
       },
@@ -46,7 +50,7 @@ const config: Config = {
         "1122px": { max: "1122px" },
       },
       spacing: {
-        "golden-h": "32vh", 
+        "golden-h": "32vh",
         "golden-w": "24.85vw",
       },
       colors: {
@@ -110,14 +114,12 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    addVariablesForColors,
-  ],
+  plugins: [require("tailwindcss-animate"), addVariablesForColors],
 };
 
 export default config;

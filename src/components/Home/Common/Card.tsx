@@ -65,7 +65,7 @@ const Card: React.FC<CardProps> = ({
               }}
               className={styles.expertiseContainer}
             >
-              <FaIndustry className={`${styles.icon} text-white`} size={24} />
+              <FaIndustry className={`${styles.icon} text-black`} size={24} />
               <div className={styles.expertiseText}>
                 <div className="">{expertiseExperience}</div>
                 <div className="text-red-600">{expertiseAbout}</div>

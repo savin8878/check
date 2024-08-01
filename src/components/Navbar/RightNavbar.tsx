@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback, memo } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { MdOutlineAccountCircle } from "react-icons/md";
 import Link from "next/link";
 import Image from "next/image";
 import CountryLayout from "../Layout/CountryLayout";
@@ -10,6 +9,7 @@ import AccountLayout from "../Layout/AccountLayout";
 import ProfileLayout from "../Layout/ProfileLayout";
 import ContactForm from "../Contact/Contact";
 import Logo from "../../../public/assets/Logo.png";
+import { VscAccount } from "react-icons/vsc";
 
 const RightNavbar: React.FC = memo(() => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -58,14 +58,9 @@ const RightNavbar: React.FC = memo(() => {
 
   return (
     <div className={`w-full max-w-screen-2xl lg:w-1/5 justify-center relative  top-0 right-0 ${hoveredItem ? "rounded-t-lg" : "rounded-lg"}`}>
-      <div className="flex items-center gap-6 justify-center h-14 px-4">
+      <div className="flex items-center gap-4 justify-center h-14 px-4">
         <span onMouseEnter={handleMouseLeave} className={`w-full h-10 z-30 hidden xl:flex justify-end items-center gap-3 ${hoveredItem ? "text-black" : "text-black"}`}>
           <CountryLayout
-            isFlagOpen={isFlagOpen}
-            setIsFlagOpen={setIsFlagOpen}
-            setOpenSearch={setOpenSearch}
-            setProfileOpen={setProfileOpen}
-            setAccountOpen={setAccountOpen}
           />
           <SearchBarLayout
             setIsFlagOpen={setIsFlagOpen}
@@ -82,7 +77,7 @@ const RightNavbar: React.FC = memo(() => {
             setAccountOpen={setAccountOpen}
           />
           <div className="relative">
-            <MdOutlineAccountCircle onClick={handleAccount} className="text-2xl cursor-pointer" />
+            <VscAccount onClick={handleAccount} className="text-18 cursor-pointer" />
             {accountOpen && <div ref={accountRef}><AccountLayout /></div>}
           </div>
           <ContactForm

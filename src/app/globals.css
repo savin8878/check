@@ -74,7 +74,7 @@
 }
 
 .btn-icon {
-  @apply border-2 rounded-full h-6 sm:h-8 w-6 sm:w-8 ml-1 sm:ml-2;
+  @apply border-black rounded-full h-6 sm:h-8 w-6 sm:w-8 ml-1 sm:ml-2;
 }
 
 .btn-icon span {
@@ -164,3 +164,9 @@ body{
   text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, 
                2px 2px 0 #000, -2px -2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000;
 }
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+

@@ -252,12 +252,13 @@
 // };
 
 // export default CountryLayout;
+
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useRouter } from 'next/navigation';
-
+import indiaflag from "../../../public/india-flag-icon.svg"
 interface Country {
   name: string;
   language: string;
@@ -272,8 +273,8 @@ const CountryLayout: React.FC = () => {
   const [selectedCountry, setSelectedCountry] = useState<Country>({
     name: "India",
     language: "हिंदी",
-    flag: "https://flagcdn.com/in.svg",
-    code: "in",
+    flag: indiaflag,
+    code: "En",
   });
 
   const countries: Country[] = [
@@ -287,10 +288,10 @@ const CountryLayout: React.FC = () => {
     { name: "Germany", language: "Deutsch", flag: "https://flagcdn.com/de.svg", code: "de" },
     { name: "Switzerland", language: "Deutsch", flag: "https://flagcdn.com/ch.svg", code: "ch" },
     { name: "Austria", language: "Deutsch", flag: "https://flagcdn.com/at.svg", code: "at" },
-    { name: "Australia", language: "English", flag: "https://flagcdn.com/au.svg", code: "au" },
-    { name: "Canada", language: "English", flag: "https://flagcdn.com/ca.svg", code: "ca" },
-    { name: "United Kingdom", language: "English", flag: "https://flagcdn.com/gb.svg", code: "gb" },
-    { name: "United States", language: "English", flag: "https://flagcdn.com/us.svg", code: "us" },
+    { name: "Australia", language: "English-au", flag: "https://flagcdn.com/au.svg", code: "au" },
+    { name: "Canada", language: "English-ca", flag: "https://flagcdn.com/ca.svg", code: "ca" },
+    { name: "United Kingdom", language: "English-gb", flag: "https://flagcdn.com/gb.svg", code: "gb" },
+    { name: "United States", language: "English-us", flag: "https://flagcdn.com/us.svg", code: "us" },
     { name: "Spain", language: "español", flag: "https://flagcdn.com/es.svg", code: "es" },
     { name: "Mexico", language: "español", flag: "https://flagcdn.com/mx.svg", code: "mx" },
     { name: "Argentina", language: "español", flag: "https://flagcdn.com/ar.svg", code: "ar" },
@@ -300,7 +301,7 @@ const CountryLayout: React.FC = () => {
     { name: "France", language: "français", flag: "https://flagcdn.com/fr.svg", code: "fr" },
     { name: "Belgium", language: "Français", flag: "https://flagcdn.com/be.svg", code: "be" },
     { name: "Luxembourg", language: "Français", flag: "https://flagcdn.com/lu.svg", code: "lu" },
-    { name: "India", language: "हिंदी", flag: "https://flagcdn.com/in.svg", code: "in" },
+    { name: "India", language: "हिंदी", flag: indiaflag, code: "En" },
     { name: "Italy", language: "italiano", flag: "https://flagcdn.com/it.svg", code: "it" },
     { name: "Japan", language: "日本語", flag: "https://flagcdn.com/jp.svg", code: "jp" },
     { name: "Belarus", language: "Pусский", flag: "https://flagcdn.com/by.svg", code: "by" },
@@ -357,7 +358,7 @@ const CountryLayout: React.FC = () => {
           aria-haspopup="true"
           onClick={handleFlagOpen}
         >
-          <div className="h-7 w-7 flex items-center justify-center rounded-full overflow-hidden border-2">
+          <div className="h-[1.35rem] w-[1.35rem] flex items-center rounded-full justify-center  overflow-hidden">
             <Image
               width={100}
               height={100}
@@ -366,7 +367,7 @@ const CountryLayout: React.FC = () => {
               className="h-full w-full object-cover"
             />
           </div>
-          <p className="font-montserrat text-16">
+          <p className="font-montserrat ml-1 text-black text-16">
             {selectedCountry.code.toUpperCase()}
           </p>
         </button>

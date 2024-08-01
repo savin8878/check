@@ -15,14 +15,13 @@
   display: flex;
   align-items: center;
   background: rgb(255, 255, 255);
-  border-radius:24px;
+  border-radius:16px;
   overflow: hidden;
   transform: translateX(-50%) scale(0);
   opacity: 0;
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
   z-index: 1;
 }
-
 .card.next {
   transform: translateX(-50%) scale(0);
   opacity: 0;
@@ -37,7 +36,7 @@
 
 .icon {
   flex-shrink: 0;
-  width:200px; /* Adjust icon size */
+  width:170px; /* Adjust icon size */
   height: 90px;
   margin-left:5px; /* Space between icon and text */
   display: flex;

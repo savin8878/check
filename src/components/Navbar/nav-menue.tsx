@@ -73,9 +73,9 @@ export const MenuItem = ({
   return (
     <div
       ref={ref}
-      className="z-10 cursor-pointer px-3 font-montserrat py-2 text-white  md:px-3 md:py-2 md:text-base "
+      className="z-10 cursor-pointer px-3 font-montserrat py-2 text-white  md:px-3 md:py-1 md:text-base "
     >
-      <motion.p className="text-black">
+      <motion.p className="text-black font-poppins text-16">
         {item}
       </motion.p>
       {active === item && (
@@ -103,13 +103,16 @@ const Cursor = ({
   return (
     <motion.div
       animate={{
-        ...position,
-        transition: {
-          duration: 0.3,
-          ease: "easeInOut",
-        },
+        left: position.left,
+        width: position.width,
+        opacity: position.opacity,
       }}
-      className="absolute z-0 h-6 rounded-full bg-[#eaeaea] md:h-7 mt-[0.35rem]"
+      transition={{
+        type: "spring",
+        stiffness: 1000, // Higher stiffness for faster transition
+        damping: 50, // Lower damping for less resistance
+      }}
+      className="absolute z-0 h-6 rounded-full bg-[#eaeaea] md:h-6 mt-[0.25rem]"
     />
   );
 };

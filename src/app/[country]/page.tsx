@@ -9,6 +9,7 @@ import NewsFeature from "@/components/Home/NewsFeature";
 import KnowMachine from "@/components/Home/ProductDetails";
 import HomeTestimonial from "@/components/Home/TestimonialsSection";
 import { data } from "@/components/Constants/Navbar/about-data";
+import NavLinksDemo from "@/components/Home/NavLinks";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -21,7 +22,7 @@ export default function Home() {
   const homeTestimonialRef = useRef<HTMLDivElement>(null);
 
   return (
-    <main className="">
+    <main className="bg-[#f2f2f2] h-screen">
       <Hero
         refs={{
           heroRef,
@@ -34,7 +35,20 @@ export default function Home() {
           homeTestimonialRef,
         }}
       />
-      <div className="mx-6" ref={aboutUsRef}>
+      <NavLinksDemo
+        refs={{
+          heroRef,
+          aboutUsRef,
+          infiniteCardsRef,
+          knowMoreRef,
+          homeMachineRef,
+          newsFeatureRef,
+          knowMachineRef,
+          homeTestimonialRef,
+        }}
+      />
+
+      <div className="mx-6 mt-32" ref={aboutUsRef}>
         <AboutUs
           heading={data.heading}
           description={data.description}
@@ -42,22 +56,22 @@ export default function Home() {
           cards={data.cards}
         />
       </div>
-      <div className="mx-6" ref={infiniteCardsRef}>
+      <div className="mx-6 mt-32" ref={infiniteCardsRef}>
         <InfiniteMovingCardsDemo />
       </div>
-      <div className="mx-6" ref={knowMoreRef}>
+      <div className="mx-6 mt-32" ref={knowMoreRef}>
         <KnowMore />
       </div>
-      <div className="mx-6" ref={homeMachineRef}>
+      <div className="mx-6 mt-32" ref={homeMachineRef}>
         <HomeMachine />
       </div>
-      <div className="mx-6" ref={newsFeatureRef}>
+      <div className="mx-6 mt-32" ref={newsFeatureRef}>
         <NewsFeature />
       </div>
-      <div className="mx-6" ref={knowMachineRef}>
+      <div className="mx-6 mt-32" ref={knowMachineRef}>
         <KnowMachine />
       </div>
-      <div className="mx-6" ref={homeTestimonialRef}>
+      <div className="mx-6 mt-32" ref={homeTestimonialRef}>
         <HomeTestimonial />
       </div>
     </main>

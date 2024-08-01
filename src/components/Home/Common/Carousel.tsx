@@ -1,30 +1,33 @@
 import { useState, useEffect } from "react";
-import { FaGlobe, FaCity, FaRecycle, FaLeaf, FaBuilding } from 'react-icons/fa'; // Update icons as needed
 import styles from "../Styles/Carousel.module.css";
 import Image from "next/image";
-import image from "../../../../public/assets/image.png"
+import image from "../../../../public/assets/image.png";
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const items = [
     {
       id: 1,
-      title: "Like a paper cup, a sustainable relationship balances strength and flexibility, built to weather life's challenges without losing its shape.",
-      icon: <FaLeaf size={50} className="text-green-500" />, // Updated icon
+      title:
+        "Like a paper cup, a sustainable relationship balances strength and flexibility, built to weather life's challenges without losing its shape.",
+      icon: "https://i.pinimg.com/564x/a1/0b/2b/a10b2b0d6b8d33d066a71115be3e6d41.jpg", // Updated icon
     },
     {
       id: 2,
-      title: "Crafted in harmony with Jaipur's heritage, Nesco's paper cup machines symbolize modern efficiency integrated with the timeless allure of the Pink City.",
-      icon: <FaBuilding size={50} className="text-gray-300" />, // Updated icon
+      title:
+        "Crafted in harmony with Jaipur's heritage, Nesco's paper cup machines symbolize modern efficiency integrated with the timeless allure of the Pink City.",
+      icon: "https://i.pinimg.com/236x/01/24/73/01247305bd1f1dd27f1b24cdf78ac61a.jpg", // Updated icon
     },
     {
       id: 3,
-      title: "Nessco's paper cup machines leave a global footprint, catering to sustainable packaging needs worldwide with innovative technology.",
-      icon: <FaGlobe size={50} className="text-[#483d78]" />,
+      title:
+        "Nessco's paper cup machines leave a global footprint, catering to sustainable packaging needs worldwide with innovative technology.",
+      icon: "https://i.pinimg.com/236x/c0/57/85/c05785e40e64dd85c82e0cb7abea551c.jpg",
     },
     {
       id: 4,
-      title: "From Asia to Europe, Nessco's paper cup machines uphold quality and eco-friendliness, shaping the future of packaging solutions internationally.",
-      icon: <FaRecycle size={50} className="text-yellow-600" />, // Updated icon
+      title:
+        "From Asia to Europe, Nessco's paper cup machines uphold quality and eco-friendliness, shaping the future of packaging solutions internationally.",
+      icon: "https://i.pinimg.com/236x/dc/44/33/dc44331372aa41e8e8d7e042c31a93fe.jpg", // Updated icon
     },
   ];
 
@@ -41,11 +44,17 @@ const Carousel = () => {
         <div
           key={item.id}
           className={`${styles.card} ${
-            currentIndex === index ? styles.active : ""
+            currentIndex === index ? styles.active : styles.notactive
           } ${currentIndex === (index + 1) % items.length ? styles.next : ""}`}
         >
           <div className={styles.icon}>
-            <Image src={image} className="h-28 w-full rounded-3xl" height={200} width={200} alt={"image"}/>
+            <Image
+              src={item.icon}
+              className="h-28 w-full rounded-2xl"
+              height={200}
+              width={200}
+              alt={"image"}
+            />
           </div>
           <div className={styles.content}>
             <h2 className="font-montserrat text-sm">{item.title}</h2>

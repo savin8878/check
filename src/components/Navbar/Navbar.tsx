@@ -24,51 +24,27 @@ export default function NavbarDemo() {
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
-  const [scrolled, setScrolled] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState("down");
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY && currentScrollY > 0) {
-        setScrollDirection("down");
-        setScrolled(true);
-      } else if (currentScrollY < lastScrollY) {
-        setScrollDirection("up");
-        setScrolled(false);
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  
 
   return (
     <div
       className={cn(
         "fixed flex w-full max-w-screen-2xl items-center inset-x-0 mx-auto z-50 transition-transform duration-300",
-        scrolled && scrollDirection === "down" ? "-translate-y-full" : "translate-y-0 bg-[#f2f2f2] ",
+        "translate-y-0 bg-[#f2f2f2] ",
         className
       )}
     >
       <div className="w-1/5 ml-8 flex justify-start items-center">
         <Link
           href="/"
-          className="h-10 rounded-2xl lg:ml-2 flex justify-center items-center"
+          className="h-6 rounded-2xl lg:ml-2 flex justify-center items-center"
         >
           <Image
             src={Logo}
             alt="Logo"
-            width={100}
-            height={100}
-            className="h-[1.5rem] w-full"
+            width={50}
+            height={50}
+            className="h-[1.4rem] w-full"
           />
         </Link>
       </div>

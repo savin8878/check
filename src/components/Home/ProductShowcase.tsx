@@ -410,7 +410,7 @@ const HomeMachine: React.FC = () => {
   return (
     <div className="container h-full mt-14 mx-auto px-4">
       <Stepper onStepChange={setActiveStep} />
-      <div className="grid h-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-4">
+      <div className="grid h-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 mt-4">
         {filteredCards.map((card, index) => (
           <Card
             key={index}

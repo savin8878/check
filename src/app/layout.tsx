@@ -1,9 +1,11 @@
+// app/layout.tsx (or your specific layout file)
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import '@fontsource/montserrat'; // Defaults to weight 400
+// import Navbar, { NavbarDemo } from '@/components/Navbar/Navbar';
+import "@fontsource/montserrat"; // Defaults to weight 400
 import NavbarDemo from '@/components/Navbar/Navbar';
-
+import "@fontsource/alex-brush"; // Defaults to weight 400
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -19,9 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body className={inter.className}>
-        <NavbarDemo />
+        <NavbarDemo/>
         {children}
       </body>
     </html>

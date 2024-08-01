@@ -67,7 +67,7 @@ const Card: React.FC<CardProps> = ({
           onClick={handleModalToggle}
           className="absolute text-3xl top-2 right-2 bg-[#483d78] text-white rounded-full w-8 h-8 flex items-center justify-center"
         >
-          +
+          <div className="-mt-1">+</div>
         </button>
       </div>
       <div className="h-40 relative rounded-3xl overflow-hidden">

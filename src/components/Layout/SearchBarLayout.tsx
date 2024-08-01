@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, FC } from "react";
 import { ImSearch } from "react-icons/im";
+import { TfiSearch } from "react-icons/tfi";
 
 interface SearchBarLayoutProps {
   setIsFlagOpen: (isOpen: boolean) => void;
@@ -47,9 +48,9 @@ const SearchBarLayout: FC<SearchBarLayoutProps> = ({
       className="relative max-w-screen-2xl flex justify-center text-left"
     >
       <div className="flex items-center justify-center space-x-4">
-        <ImSearch
+        < TfiSearch
           onClick={handleSearchBar}
-          className="font-montserrat text-16 font-thin stroke-0 cursor-pointer"
+          className="font-montserrat text-18 cursor-pointer"
         />
       </div>
       {openSearch && (
