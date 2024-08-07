@@ -1,23 +1,12 @@
-import {
-    FaLeaf,
-    FaProjectDiagram,
-    FaLightbulb,
-    FaRecycle,
-  } from "react-icons/fa";
-  import { AiOutlineProduct } from 'react-icons/ai';
-  import { LiaToolsSolid } from 'react-icons/lia';
-  import { IoBarChartOutline } from 'react-icons/io5';
-  import {
+
+    import {
     papercup,
     paperplate2,
     paperbowl,
     paperlid,
     paperstraw,
     paperbag1,
-    missionImage,
-    companyImage,
-    strengthImage,
-    pinkCityImage,
+ 
     paperBowlMachineImage,
     paperBagMachineImage,
     paperPlateMachineImage,
@@ -25,7 +14,6 @@ import {
     fullyAutomaticBagMachineImage,
     PCM110WithPLC,
     paperStrawMachine,
-    BookServiceImage,
     paperLunchBoxMachine,
   } from "../../../../public/assets";
 
@@ -41,7 +29,21 @@ import {
     paperStrawMachine: StaticImageData;
     paperLunchBoxMachine: StaticImageData;
   }
-  
+  interface Machine {
+    name: string;
+    image: string;
+    mimage: StaticImageData;
+    category: string;
+    icon: string;
+    introduction: string;
+    parameters: string;
+    application: string;
+    product_description: string;
+    technical_specification: string;
+    optional_add_ons: string;
+    faqs: string;
+    product_heading: string;
+  }
   export const images: Images = {
     paperBowlMachineImage: paperBowlMachineImage,
     paperBagMachineImage: paperBagMachineImage,
@@ -52,11 +54,8 @@ import {
     paperStrawMachine: paperStrawMachine,
     paperLunchBoxMachine: paperLunchBoxMachine,
   };
-  
-  
-  
   // items for banners.jsx
-  export const Machines = [
+  export const Machines: Machine[] = [
     {
       name: "NS-015",
       image: "PCM110WithPLC",
@@ -73,7 +72,7 @@ import {
       technical_specification: "Material: Stainless steel, Weight: 500kg",
       optional_add_ons: "Custom cup size molds available upon request.",
       faqs: "Q: What is the warranty period? A: 1-year warranty provided for parts and service.",
-      related_product: "NS-016, NS-017",
+      product_heading: "NS-016, NS-017",
     },
     {
       name: "NS-016",
@@ -92,7 +91,7 @@ import {
       optional_add_ons:
         "Automatic cup stacking unit available as an optional accessory.",
       faqs: "Q: How many cups can it produce per minute? A: This machine can produce up to 80 cups per minute.",
-      related_product: "NS-015, NS-017",
+      product_heading: "NS-015, NS-017",
     },
     {
       name: "NS-017",
@@ -111,7 +110,7 @@ import {
       optional_add_ons:
         "Additional molds for special cup designs available upon request.",
       faqs: "Q: What material can this machine handle? A: It is capable of handling both single and double PE coated paper.",
-      related_product: "NS-015, NS-016",
+      product_heading: "NS-015, NS-016",
     },
     {
       name: "NS-018",
@@ -126,14 +125,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "NS-019",
@@ -149,14 +148,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "NS-020",
@@ -172,14 +171,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "Paper Bowl Machine 01",
@@ -198,7 +197,7 @@ import {
       optional_add_ons:
         "Customizable bowl depth and diameter settings available.",
       faqs: "Q: What is the production capacity of this machine? A: It can produce up to 120 bowls per minute.",
-      related_product: "Paper Bowl Machine 02, Paper Bowl Machine 03",
+      product_heading: "Paper Bowl Machine 02, Paper Bowl Machine 03",
     },
     {
       name: "Paper Bowl Machine 02",
@@ -213,14 +212,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "Paper Bowl Machine 03",
@@ -235,14 +234,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "Paper Bowl Machine 04",
@@ -257,14 +256,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "NS-021",
@@ -280,14 +279,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "NS-022",
@@ -303,14 +302,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "Cybertruck",
@@ -326,14 +325,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "Cybertruck2",
@@ -349,14 +348,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "Paper Flexo Machine",
@@ -368,14 +367,14 @@ import {
         "The Paper Flexo Machine is designed for printing on various paper surfaces, offering high-quality print results and flexibility.",
       parameters: "Voltage: 220V, Power: 2000W",
       application:
-        "Ideal for printing logos, designs, and labels on paper cups, bowls, and plates.",
+      "The flexo printing machine is ideal for printing high-quality logos, designs, and labels on various disposable and packaging products, including paper cups, bowls, and plates. ",
       product_description:
         "This machine features a modular design for easy customization and maintenance. It includes precision controls for accurate ink application and drying.",
       technical_specification: "Material: Aluminum alloy, Weight: 800kg",
       optional_add_ons:
         "Additional color printing units available for multi-color designs.",
       faqs: "Q: What is the printing speed of this machine? A: It can print up to 150 meters per minute.",
-      related_product: "Paper Flexo Machine 2, Paper Flexo Machine 3",
+      product_heading: "Food Packaging Machine",
     },
     {
       name: "Paper Flexo Machine",
@@ -388,16 +387,16 @@ import {
       parameters:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       application:
-        "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
+      "The flexo printing machine is ideal for printing high-quality logos, designs, and labels on various disposable and packaging products, including paper cups, bowls, and plates. ",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "Paper Bag Machine1",
@@ -410,14 +409,14 @@ import {
         "The Paper Bag Machine1 is designed for automated production of paper bags, offering efficiency and reliability.",
       parameters: "Voltage: 240V, Power: 2200W",
       application:
-        "Suitable for producing various sizes and styles of paper bags, including grocery bags and gift bags.",
+      "The flexo printing machine is ideal for printing high-quality logos, designs, and labels on various disposable and packaging products, including paper cups, bowls, and plates. ",
       product_description:
         "This machine features a robust structure and advanced folding mechanisms, ensuring precise bag formation and strength.",
       technical_specification: "Material: Stainless steel, Weight: 900kg",
       optional_add_ons:
         "Handle attachment unit available as an optional accessory.",
       faqs: "Q: What types of paper can this machine use? A: It is compatible with kraft paper and cardboard materials.",
-      related_product: "Paper Bag Machine new, Paper Bag Machine new2",
+      product_heading: "Paper Bag Machine new, Paper Bag Machine new2",
     },
     {
       name: "Paper Flexo Machine2",
@@ -430,16 +429,16 @@ import {
       parameters:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       application:
-        "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
+        "The flexo printing machine is ideal for printing high-quality logos, designs, and labels on various disposable and packaging products, including paper cups, bowls, and plates. ",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "Paper Flexo Machine3",
@@ -455,14 +454,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "Paper Bag Machine new",
@@ -481,7 +480,7 @@ import {
       optional_add_ons:
         "Handle attachment and printing units available as optional accessories.",
       faqs: "Q: What is the speed of this machine? A: It can produce up to 200 bags per minute.",
-      related_product: "Paper Bag Machine1, Paper Bag Machine new2",
+      product_heading: "Paper Bag Machine1, Paper Bag Machine new2",
     },
     {
       name: "Paper Bag Machine1",
@@ -496,14 +495,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
     {
       name: "Paper Bag Machine new2",
@@ -518,14 +517,14 @@ import {
       application:
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
       product_description:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+        "Food Packaging Machine.",
       technical_specification:
         "Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       optional_add_ons:
         "Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
       faqs: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla.",
-      related_product:
-        "Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      product_heading:
+        "Food Packaging Machine.",
     },
   ];
   

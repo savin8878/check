@@ -3,64 +3,15 @@ import React, { useState, useCallback, memo, useEffect, useRef } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Carousel from "./Common/Carousel";
-import Link from "next/link";
-import NavLinksDemo from "./NavLinks";
 
-interface NavLinkProps {
-  text: string;
-  index: number;
-  activeLink: number;
-  handleMouseEnter: (index: number) => void;
-  handleMouseLeave: () => void;
-  handleClick: () => void;
-}
 
-const NavLink: React.FC<NavLinkProps> = memo(
-  ({ text, index, activeLink, handleMouseEnter, handleMouseLeave, handleClick }) => (
-    <Link
-      href=""
-      scroll={false}
-      className={`text-black hover:font-bold custome-scale-90 ${activeLink === index ? "border-b-2 border-red-600" : ""}`}
-      onMouseEnter={() => handleMouseEnter(index)}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
-    >
-      {text}
-    </Link>
-  )
-);
 
-NavLink.displayName = "NavLink";
-
-interface HeroProps {
-  refs: {
-    heroRef: React.RefObject<HTMLDivElement>;
-    aboutUsRef: React.RefObject<HTMLDivElement>;
-    infiniteCardsRef: React.RefObject<HTMLDivElement>;
-    knowMoreRef: React.RefObject<HTMLDivElement>;
-    homeMachineRef: React.RefObject<HTMLDivElement>;
-    newsFeatureRef: React.RefObject<HTMLDivElement>;
-    knowMachineRef: React.RefObject<HTMLDivElement>;
-    homeTestimonialRef: React.RefObject<HTMLDivElement>;
-  };
-}
-
-const Hero: React.FC<HeroProps> = ({ refs }) => {
-  const [activeLink, setActiveLink] = useState<number>(0);
+const Hero: React.FC = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
   const videoRef = useRef<HTMLDivElement | null>(null);
 
-  const handleMouseEnter = useCallback((index: number) => {
-    setActiveLink(index);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setActiveLink(-1);
-  }, []);
-
-  const handleClick = (ref: React.RefObject<HTMLDivElement>) => () => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
-  };
+ 
+ 
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -133,7 +84,9 @@ const Hero: React.FC<HeroProps> = ({ refs }) => {
             FOOD PACKING MACHINES
           </p>
           <div className="ml-4">
-            <span className="text-7xl text-[#524c42] font-alexBrush">Manufacturing</span>
+            <span className="text-7xl text-[#524c42] font-alexBrush">
+              Manufacturing
+            </span>
           </div>
         </div>
         <div className="w-full px-4 md:w-3/5">

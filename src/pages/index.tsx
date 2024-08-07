@@ -9,7 +9,7 @@ const HomePage = () => {
     router.push(`/${defaultCountry}`);
   }, [router]);
 
-  return null; // Render nothing since the user will be redirected
+  return null; 
 };
 
 export default HomePage;
